@@ -8,19 +8,36 @@ class LoginTests: QuickSpec {
     override func spec() {
  
         var view: LoginViewSpy!
-        var presenter: LoginViewPresenterSpy!
+        var presenter: LoginPresenter!
         
         describe("LoginPresenter") {
             
             beforeEach {
                 view = LoginViewSpy()
-                presenter = LoginViewPresenterSpy(view: view)
+                presenter = LoginPresenter(view: view)
             }
             
-            describe("when the view is attached") {
+            describe("when user tries to login") {
 
-                it("should init the view") {
-                    expect(presenter.initialized).to(beTrue())
+                context("and didn't filled the email text field") {
+                    it("should show a proper error message") {
+                        presenter.login(email: "", password: "123456")
+                        expect(view.error) == "Invalid email"
+                    }
+                }
+
+                context("and didn't filled the password text field") {
+                    it("should show a proper error message") {
+                        presenter.login(email: "test@test.com", password: "")
+                        expect(view.error) == "Invalid password"
+                    }
+                }
+
+                context("and filled the email and the password properly") {
+                    it("should call login normally") {
+                        presenter.login(email: "test@test.com", password: "123456")
+                        expect(view.error).to(beNil())
+                    }
                 }
 
             }
@@ -35,17 +52,4 @@ private class LoginViewSpy: LoginView {
         self.error = error
     }
 
-}
-
-private class LoginViewPresenterSpy: LoginViewPresenter {
-    var initialized: Bool = false
-    var loginCalled: Bool = false
-
-    required init(view: LoginView) {
-        initialized = true
-    }
-
-    func login(email: String, password: String) {
-        loginCalled = true
-    }
 }

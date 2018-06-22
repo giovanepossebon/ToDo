@@ -2,6 +2,7 @@ platform :ios, '10.0'
 
 target 'ToDo' do
   use_frameworks!
+  inhibit_all_warnings!
 
   pod 'Alamofire', '~> 4.7'
   pod 'KeychainSwift', '~> 11.0'

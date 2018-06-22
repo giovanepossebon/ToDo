@@ -1,21 +1,23 @@
 import UIKit
 
 protocol LoginViewPresenter {
-    init(view: LoginView)
     func login(email: String?, password: String?)
     func signUp()
+    var router: LoginViewRouter { get }
 }
 
 class LoginPresenter: LoginViewPresenter {
-    
+
     // MARK: Properties
     
     unowned let view: LoginView
+    internal let router: LoginViewRouter
     
     // MARK: Initialization
     
-    required init(view: LoginView) {
+    required init(view: LoginView, router: LoginViewRouter) {
         self.view = view
+        self.router = router
     }
     
     // MARK: Public API
@@ -49,7 +51,7 @@ class LoginPresenter: LoginViewPresenter {
     }
 
     func signUp() {
-        
+        router.presentSignUp()
     }
 
 }

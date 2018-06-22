@@ -13,12 +13,16 @@ struct LoginService {
     static func login(input: LoginInput, callback: @escaping (Response<LoginOutput>) -> ()) {
         let url = UrlBuilder(path: [.auth, .login])
 
-        Network.request(url, method: .post, parameters: input) { response in
+        Network.request(url, method: .post, parameters: input) { response, error  in
             switch response.result {
-
             case .success:
+                guard error == nil else {
+                    callback(Response<LoginOutput>(data: nil, result: .error(message: error?.message ?? "")))
+                    return
+                }
+
                 guard let data = response.data else {
-                    callback(Response<LoginOutput>(data: nil, result: .error(message: "Problem with data")))
+                    callback(Response<LoginOutput>(data: nil, result: .error(message: "Unexpected Error")))
                     return
                 }
 
@@ -33,5 +37,4 @@ struct LoginService {
             }
         }
     }
-
 }
