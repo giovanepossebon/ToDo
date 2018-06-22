@@ -28,8 +28,23 @@
 		9FC65B9220DC579700ED3436 /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC65B9120DC579700ED3436 /* LoginInput.swift */; };
 		9FC65B9420DC57E100ED3436 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC65B9320DC57E100ED3436 /* LoginService.swift */; };
 		9FC65B9620DC586F00ED3436 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC65B9520DC586F00ED3436 /* URLBuilder.swift */; };
-		9FC65B9920DC596100ED3436 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC65B9820DC596100ED3436 /* Auth.swift */; };
+		9FC65B9920DC596100ED3436 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC65B9820DC596100ED3436 /* UserSession.swift */; };
 		9FC65B9B20DC61EF00ED3436 /* LoginOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC65B9A20DC61EF00ED3436 /* LoginOutput.swift */; };
+		9FF7B75620DD3D5C006A9F76 /* SignUpNameStep.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FF7B74F20DD3D5C006A9F76 /* SignUpNameStep.strings */; };
+		9FF7B75820DD3D5C006A9F76 /* SignUpNameStepPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7B75120DD3D5C006A9F76 /* SignUpNameStepPresenter.swift */; };
+		9FF7B75A20DD3D5C006A9F76 /* SignUpNameStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7B75320DD3D5C006A9F76 /* SignUpNameStepViewController.swift */; };
+		9FF7B75C20DD3D5C006A9F76 /* SignUpNameStepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF7B75520DD3D5C006A9F76 /* SignUpNameStepViewController.xib */; };
+		9FF7B75D20DD3D71006A9F76 /* SignUpNameStepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7B75220DD3D5C006A9F76 /* SignUpNameStepTests.swift */; };
+		9FF7B75F20DD4097006A9F76 /* SignUpNameViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7B75E20DD4097006A9F76 /* SignUpNameViewRouter.swift */; };
+		9FF7B76220DD42BC006A9F76 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7B76120DD42BC006A9F76 /* BaseNavigationController.swift */; };
+		9FF7B76420DD4397006A9F76 /* NavigationBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7B76320DD4397006A9F76 /* NavigationBarManager.swift */; };
+		9FF7B76D20DD54B6006A9F76 /* SignUpEmailStep.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FF7B76620DD54B6006A9F76 /* SignUpEmailStep.strings */; };
+		9FF7B76F20DD54B6006A9F76 /* SignUpEmailStepPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7B76820DD54B6006A9F76 /* SignUpEmailStepPresenter.swift */; };
+		9FF7B77120DD54B6006A9F76 /* SignUpEmailStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7B76A20DD54B6006A9F76 /* SignUpEmailStepViewController.swift */; };
+		9FF7B77220DD54B6006A9F76 /* SignUpEmailStepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7B76B20DD54B6006A9F76 /* SignUpEmailStepModel.swift */; };
+		9FF7B77320DD54B6006A9F76 /* SignUpEmailStepViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF7B76C20DD54B6006A9F76 /* SignUpEmailStepViewController.xib */; };
+		9FF7B77420DD54C1006A9F76 /* SignUpEmailStepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7B76920DD54B6006A9F76 /* SignUpEmailStepTests.swift */; };
+		9FF7B77620DD55E3006A9F76 /* SignUpEmailStepViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7B77520DD55E3006A9F76 /* SignUpEmailStepViewRouter.swift */; };
 		C8D5001A5BA4C6D89B3C514A /* Pods_ToDoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF479ACBA93ECD8653FE4997 /* Pods_ToDoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,8 +95,23 @@
 		9FC65B9120DC579700ED3436 /* LoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
 		9FC65B9320DC57E100ED3436 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		9FC65B9520DC586F00ED3436 /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
-		9FC65B9820DC596100ED3436 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		9FC65B9820DC596100ED3436 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		9FC65B9A20DC61EF00ED3436 /* LoginOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOutput.swift; sourceTree = "<group>"; };
+		9FF7B74F20DD3D5C006A9F76 /* SignUpNameStep.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = SignUpNameStep.strings; sourceTree = "<group>"; };
+		9FF7B75120DD3D5C006A9F76 /* SignUpNameStepPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameStepPresenter.swift; sourceTree = "<group>"; };
+		9FF7B75220DD3D5C006A9F76 /* SignUpNameStepTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameStepTests.swift; sourceTree = "<group>"; };
+		9FF7B75320DD3D5C006A9F76 /* SignUpNameStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameStepViewController.swift; sourceTree = "<group>"; };
+		9FF7B75520DD3D5C006A9F76 /* SignUpNameStepViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpNameStepViewController.xib; sourceTree = "<group>"; };
+		9FF7B75E20DD4097006A9F76 /* SignUpNameViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameViewRouter.swift; sourceTree = "<group>"; };
+		9FF7B76120DD42BC006A9F76 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		9FF7B76320DD4397006A9F76 /* NavigationBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarManager.swift; sourceTree = "<group>"; };
+		9FF7B76620DD54B6006A9F76 /* SignUpEmailStep.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = SignUpEmailStep.strings; sourceTree = "<group>"; };
+		9FF7B76820DD54B6006A9F76 /* SignUpEmailStepPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailStepPresenter.swift; sourceTree = "<group>"; };
+		9FF7B76920DD54B6006A9F76 /* SignUpEmailStepTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailStepTests.swift; sourceTree = "<group>"; };
+		9FF7B76A20DD54B6006A9F76 /* SignUpEmailStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailStepViewController.swift; sourceTree = "<group>"; };
+		9FF7B76B20DD54B6006A9F76 /* SignUpEmailStepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailStepModel.swift; sourceTree = "<group>"; };
+		9FF7B76C20DD54B6006A9F76 /* SignUpEmailStepViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpEmailStepViewController.xib; sourceTree = "<group>"; };
+		9FF7B77520DD55E3006A9F76 /* SignUpEmailStepViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailStepViewRouter.swift; sourceTree = "<group>"; };
 		B0018DD30408083D044CCE17 /* Pods-ToDoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoTests/Pods-ToDoTests.release.xcconfig"; sourceTree = "<group>"; };
 		B05468E1B16B8705EC88E255 /* Pods_ToDoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84162DB364C515461BC7448 /* Pods-ToDoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoUITests/Pods-ToDoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +173,8 @@
 		9FA4646520DC814C007CAF18 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				9FF7B76520DD5495006A9F76 /* Email Step */,
+				9FF7B74E20DD3D0E006A9F76 /* NameStep */,
 				9FA4646620DC8158007CAF18 /* SignUpViewController.swift */,
 				9FA4646820DC83E5007CAF18 /* SignUpViewController.xib */,
 			);
@@ -174,6 +206,7 @@
 		9FC65B4620DC538A00ED3436 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				9FF7B76020DD42B0006A9F76 /* Custom */,
 				9FC65B9720DC595100ED3436 /* Model */,
 				9FC65B7920DC54C000ED3436 /* Extension */,
 				9FC65B7820DC54B800ED3436 /* Network */,
@@ -290,9 +323,45 @@
 		9FC65B9720DC595100ED3436 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9FC65B9820DC596100ED3436 /* Auth.swift */,
+				9FC65B9820DC596100ED3436 /* UserSession.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9FF7B74E20DD3D0E006A9F76 /* NameStep */ = {
+			isa = PBXGroup;
+			children = (
+				9FF7B74F20DD3D5C006A9F76 /* SignUpNameStep.strings */,
+				9FF7B75E20DD4097006A9F76 /* SignUpNameViewRouter.swift */,
+				9FF7B75320DD3D5C006A9F76 /* SignUpNameStepViewController.swift */,
+				9FF7B75120DD3D5C006A9F76 /* SignUpNameStepPresenter.swift */,
+				9FF7B75220DD3D5C006A9F76 /* SignUpNameStepTests.swift */,
+				9FF7B75520DD3D5C006A9F76 /* SignUpNameStepViewController.xib */,
+			);
+			path = NameStep;
+			sourceTree = "<group>";
+		};
+		9FF7B76020DD42B0006A9F76 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				9FF7B76120DD42BC006A9F76 /* BaseNavigationController.swift */,
+				9FF7B76320DD4397006A9F76 /* NavigationBarManager.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		9FF7B76520DD5495006A9F76 /* Email Step */ = {
+			isa = PBXGroup;
+			children = (
+				9FF7B76620DD54B6006A9F76 /* SignUpEmailStep.strings */,
+				9FF7B77520DD55E3006A9F76 /* SignUpEmailStepViewRouter.swift */,
+				9FF7B76B20DD54B6006A9F76 /* SignUpEmailStepModel.swift */,
+				9FF7B76A20DD54B6006A9F76 /* SignUpEmailStepViewController.swift */,
+				9FF7B76820DD54B6006A9F76 /* SignUpEmailStepPresenter.swift */,
+				9FF7B76920DD54B6006A9F76 /* SignUpEmailStepTests.swift */,
+				9FF7B76C20DD54B6006A9F76 /* SignUpEmailStepViewController.xib */,
+			);
+			path = "Email Step";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,9 +474,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FA4646920DC83E5007CAF18 /* SignUpViewController.xib in Resources */,
+				9FF7B76D20DD54B6006A9F76 /* SignUpEmailStep.strings in Resources */,
 				9FC65B5220DC538B00ED3436 /* LaunchScreen.storyboard in Resources */,
 				9FC65B4F20DC538B00ED3436 /* Assets.xcassets in Resources */,
+				9FF7B75620DD3D5C006A9F76 /* SignUpNameStep.strings in Resources */,
 				9FC65B8C20DC564800ED3436 /* LoginViewController.xib in Resources */,
+				9FF7B77320DD54B6006A9F76 /* SignUpEmailStepViewController.xib in Resources */,
+				9FF7B75C20DD3D5C006A9F76 /* SignUpNameStepViewController.xib in Resources */,
 				9FC65B4D20DC538A00ED3436 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,16 +604,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FC65B8A20DC564800ED3436 /* LoginViewController.swift in Sources */,
+				9FF7B75820DD3D5C006A9F76 /* SignUpNameStepPresenter.swift in Sources */,
+				9FF7B77620DD55E3006A9F76 /* SignUpEmailStepViewRouter.swift in Sources */,
 				9FC65B8820DC564800ED3436 /* LoginPresenter.swift in Sources */,
 				9FA4646420DC806A007CAF18 /* LoginViewRouter.swift in Sources */,
 				9FC65B7B20DC550500ED3436 /* Network.swift in Sources */,
 				9FC65B9220DC579700ED3436 /* LoginInput.swift in Sources */,
+				9FF7B77220DD54B6006A9F76 /* SignUpEmailStepModel.swift in Sources */,
+				9FF7B76F20DD54B6006A9F76 /* SignUpEmailStepPresenter.swift in Sources */,
+				9FF7B77120DD54B6006A9F76 /* SignUpEmailStepViewController.swift in Sources */,
 				9FC65B9B20DC61EF00ED3436 /* LoginOutput.swift in Sources */,
 				9FC65B7D20DC559100ED3436 /* ToDoAPI.swift in Sources */,
 				9FC65B9620DC586F00ED3436 /* URLBuilder.swift in Sources */,
+				9FF7B75F20DD4097006A9F76 /* SignUpNameViewRouter.swift in Sources */,
 				9FC65B4820DC538A00ED3436 /* AppDelegate.swift in Sources */,
+				9FF7B75A20DD3D5C006A9F76 /* SignUpNameStepViewController.swift in Sources */,
 				9FC65B9420DC57E100ED3436 /* LoginService.swift in Sources */,
-				9FC65B9920DC596100ED3436 /* Auth.swift in Sources */,
+				9FC65B9920DC596100ED3436 /* UserSession.swift in Sources */,
+				9FF7B76220DD42BC006A9F76 /* BaseNavigationController.swift in Sources */,
+				9FF7B76420DD4397006A9F76 /* NavigationBarManager.swift in Sources */,
 				9FA4646720DC8158007CAF18 /* SignUpViewController.swift in Sources */,
 				9FA4646220DC79A5007CAF18 /* APIError.swift in Sources */,
 			);
@@ -550,7 +632,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FF7B75D20DD3D71006A9F76 /* SignUpNameStepTests.swift in Sources */,
 				9FC65B5D20DC538B00ED3436 /* ToDoTests.swift in Sources */,
+				9FF7B77420DD54C1006A9F76 /* SignUpEmailStepTests.swift in Sources */,
 				9FA4646020DC6F51007CAF18 /* LoginTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

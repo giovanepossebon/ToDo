@@ -12,12 +12,14 @@ class LoginPresenter: LoginViewPresenter {
     
     unowned let view: LoginView
     internal let router: LoginViewRouter
-    
+    private let service: LoginServiceContract
+
     // MARK: Initialization
     
-    required init(view: LoginView, router: LoginViewRouter) {
+    required init(view: LoginView, router: LoginViewRouter, service: LoginServiceContract) {
         self.view = view
         self.router = router
+        self.service = service
     }
     
     // MARK: Public API
@@ -35,15 +37,10 @@ class LoginPresenter: LoginViewPresenter {
 
         let request = LoginInput(email: email, password: password)
 
-        LoginService.login(input: request) { [weak self] output in
+        service.login(input: request) { [weak self] output in
             switch output.result {
             case .success:
-                guard let output = output.data else {
-                    self?.view.showError("Unexpected Error")
-                    return
-                }
-
-                UserSession.shared.authToken = output.authToken
+                self?.router.login()
             case .error(message: let error):
                 self?.view.showError(error)
             }

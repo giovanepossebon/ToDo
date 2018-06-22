@@ -8,9 +8,13 @@
 
 import Foundation
 
-struct LoginService {
+protocol LoginServiceContract {
+    func login(input: LoginInput, callback: @escaping (Response<LoginOutput>) -> ())
+}
 
-    static func login(input: LoginInput, callback: @escaping (Response<LoginOutput>) -> ()) {
+struct LoginService: LoginServiceContract {
+
+    func login(input: LoginInput, callback: @escaping (Response<LoginOutput>) -> ()) {
         let url = UrlBuilder(path: [.auth, .login])
 
         Network.request(url, method: .post, parameters: input) { response, error  in
@@ -28,6 +32,8 @@ struct LoginService {
 
                 do {
                     let login = try JSONDecoder().decode(LoginOutput.self, from: data)
+                    UserSession.shared.authToken = login.authToken
+                    
                     callback(Response<LoginOutput>(data: login, result: .success))
                 } catch {
                     callback(Response<LoginOutput>(data: nil, result: .error(message: "Problem with serialization")))

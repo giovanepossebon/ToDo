@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginViewRouter {
     func presentSignUp()
+    func login()
 }
 
 class LoginViewRouterImplementation: LoginViewRouter {
@@ -20,8 +21,12 @@ class LoginViewRouterImplementation: LoginViewRouter {
     }
 
     func presentSignUp() {
-        let controller = SignUpViewController()
-        let navigation = UINavigationController(rootViewController: controller)
+        let controller = SignUpNameStepViewController()
+        let navigation = BaseNavigationController(rootViewController: controller)
         loginViewController?.present(navigation, animated: true, completion: nil)
+    }
+
+    func login() {
+
     }
 }

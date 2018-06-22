@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
     
     init() {
         super.init(nibName: "LoginViewController", bundle: nil)
-        presenter = LoginPresenter(view: self, router: LoginViewRouterImplementation(loginViewController: self))
+        presenter = LoginPresenter(view: self, router: LoginViewRouterImplementation(loginViewController: self), service: LoginService())
     }
     
     required init?(coder aDecoder: NSCoder) { return nil }
