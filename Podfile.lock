@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (4.7.2)
+  - KeychainSwift (11.0.0)
+  - Nimble (7.1.2)
+  - Quick (1.3.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - KeychainSwift (~> 11.0)
+  - Nimble
+  - Quick
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - KeychainSwift
+    - Nimble
+    - Quick
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  KeychainSwift: bea6bd9f98af7b8d7ca4aa79fe105c00fab532db
+  Nimble: 3835ba9f459daa6b347f8a8e110aaae8ca1920a8
+  Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
+
+PODFILE CHECKSUM: b3298bfe5ce8979e4fcc7c3f0d383f8c30a40ebc
+
+COCOAPODS: 1.5.3
