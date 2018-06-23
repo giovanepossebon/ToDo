@@ -46,13 +46,13 @@ class SignUpPasswordPresenter: SignUpPasswordViewPresenter {
                                 password: password,
                                 repassword: repassword)
 
-        service.signUp(input: input) { [weak self] response in
-            switch response.result {
-            case .success:
-                self?.router.toSuccess(message: response.data?.message ?? "")
-            case .error(message: let error):
-                self?.view.showError(error)
+        service.signUp(input: input) { [weak self] output, error in
+            guard error == nil else {
+                self?.view.showError(error?.message ?? "")
+                return
             }
+
+            self?.router.toSuccess(message: output?.message ?? "")
         }
     }
 }

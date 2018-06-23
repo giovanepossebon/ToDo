@@ -26,14 +26,14 @@ class TodoPresenter: TodoViewPresenter {
     // MARK: Public API
 
     func fetchTodoList() {
-        service.fetchTodos { [weak self] response in
-            switch response.result {
-            case .success:
-                let todos = response.data?.compactMap { Todo(output: $0) }
-                self?.view.setTodoList(todos)
-            case .error(message: let error):
-                self?.view.showError(error)
+        service.fetchTodos { [weak self] output, error in
+            guard error == nil else {
+                self?.view.showError(error?.localizedDescription ?? "")
+                return
             }
+
+            let todos = output?.compactMap { Todo(output: $0) }
+            self?.view.setTodoList(todos)
         }
     }
 

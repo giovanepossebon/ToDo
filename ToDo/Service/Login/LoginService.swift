@@ -9,38 +9,13 @@
 import Foundation
 
 protocol LoginServiceContract {
-    func login(input: LoginInput, callback: @escaping (Response<LoginOutput>) -> ())
+    func login(input: LoginInput, callback: @escaping ReturnBool)
 }
 
 struct LoginService: LoginServiceContract {
 
-    func login(input: LoginInput, callback: @escaping (Response<LoginOutput>) -> ()) {
+    func login(input: LoginInput, callback: @escaping ReturnBool) {
         let url = UrlBuilder(path: [.auth, .login])
-
-        Network.request(url, method: .post, parameters: input) { response, error  in
-            switch response.result {
-            case .success:
-                guard error == nil else {
-                    callback(Response<LoginOutput>(data: nil, result: .error(message: error?.message ?? "")))
-                    return
-                }
-
-                guard let data = response.data else {
-                    callback(Response<LoginOutput>(data: nil, result: .error(message: "Unexpected Error")))
-                    return
-                }
-
-                do {
-                    let login = try JSONDecoder().decode(LoginOutput.self, from: data)
-                    UserSession.shared.authToken = login.authToken
-                    
-                    callback(Response<LoginOutput>(data: login, result: .success))
-                } catch {
-                    callback(Response<LoginOutput>(data: nil, result: .error(message: "Problem with serialization")))
-                }
-            case .failure(let error):
-                callback(Response<LoginOutput>(data: nil, result: .error(message: error.localizedDescription)))
-            }
-        }
+        Network.requestBool(url, method: .post, parameters: input, completion: callback)
     }
 }

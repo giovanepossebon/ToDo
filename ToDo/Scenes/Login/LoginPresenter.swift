@@ -35,14 +35,12 @@ class LoginPresenter: LoginViewPresenter {
             return
         }
 
-        let request = LoginInput(email: email, password: password)
-
-        service.login(input: request) { [weak self] output in
-            switch output.result {
-            case .success:
+        let input = LoginInput(email: email, password: password)
+        service.login(input: input) { [weak self] success, error in
+            if success {
                 self?.router.login()
-            case .error(message: let error):
-                self?.view.showError(error)
+            } else {
+                self?.view.showError(error?.message ?? "")
             }
         }
     }

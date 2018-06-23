@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TodoOutput: Codable {
+struct TodoOutput: Codable, Output {
     let id: Int
     let title: String
     let createdBy: String

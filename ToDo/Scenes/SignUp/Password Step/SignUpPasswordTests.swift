@@ -87,7 +87,8 @@ private class SignUpPasswordRouterSpy: SignUpPasswordViewRouter {
 }
 
 private class SignUpPasswordServiceMock: SignupServiceContract {
-    func signUp(input: SignupInput, callback: @escaping (Response<SignupOutput>) -> ()) {
-        callback(Response<SignupOutput>(data: SignupOutput(message: "Account created successfully", authToken: "12345678"), result: .success))
+    func signUp(input: SignupInput, callback: @escaping ((SignupOutput?, APIError?) -> Void)) {
+        let output = SignupOutput(message: "Account created successfully", authToken: "12345678")
+        callback(output, nil)
     }
 }

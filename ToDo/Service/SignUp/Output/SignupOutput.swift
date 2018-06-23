@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SignupOutput: Codable {
+struct SignupOutput: Codable, Output {
     let message: String
     let authToken: String
 
