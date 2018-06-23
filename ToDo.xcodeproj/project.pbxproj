@@ -43,6 +43,12 @@
 		9FAA2B0320DE9D510010DE28 /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAA2B0220DE9D510010DE28 /* TasksModel.swift */; };
 		9FAA2B0420DE9D820010DE28 /* TasksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAA2AF720DE9BA10010DE28 /* TasksTests.swift */; };
 		9FAA2B0620DE9E6C0010DE28 /* TodoViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAA2B0520DE9E6C0010DE28 /* TodoViewRouter.swift */; };
+		9FAA2B0920DEA2760010DE28 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAA2B0820DEA2760010DE28 /* TaskCell.swift */; };
+		9FAA2B0B20DEA27D0010DE28 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FAA2B0A20DEA27D0010DE28 /* TaskCell.xib */; };
+		9FAA2B1020DEA4F80010DE28 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAA2B0F20DEA4F80010DE28 /* TaskService.swift */; };
+		9FAA2B1220DEA5730010DE28 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAA2B1120DEA5730010DE28 /* Task.swift */; };
+		9FAA2B1420DEA6120010DE28 /* TaskOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAA2B1320DEA6120010DE28 /* TaskOutput.swift */; };
+		9FAA2B1620DEA67E0010DE28 /* TaskInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAA2B1520DEA67E0010DE28 /* TaskInput.swift */; };
 		9FC65B4820DC538A00ED3436 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC65B4720DC538A00ED3436 /* AppDelegate.swift */; };
 		9FC65B4D20DC538A00ED3436 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FC65B4B20DC538A00ED3436 /* Main.storyboard */; };
 		9FC65B4F20DC538B00ED3436 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FC65B4E20DC538B00ED3436 /* Assets.xcassets */; };
@@ -130,6 +136,12 @@
 		9FAA2AFA20DE9BA10010DE28 /* TasksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TasksViewController.xib; sourceTree = "<group>"; };
 		9FAA2B0220DE9D510010DE28 /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 		9FAA2B0520DE9E6C0010DE28 /* TodoViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewRouter.swift; sourceTree = "<group>"; };
+		9FAA2B0820DEA2760010DE28 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		9FAA2B0A20DEA27D0010DE28 /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
+		9FAA2B0F20DEA4F80010DE28 /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
+		9FAA2B1120DEA5730010DE28 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		9FAA2B1320DEA6120010DE28 /* TaskOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOutput.swift; sourceTree = "<group>"; };
+		9FAA2B1520DEA67E0010DE28 /* TaskInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInput.swift; sourceTree = "<group>"; };
 		9FC65B4420DC538A00ED3436 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FC65B4720DC538A00ED3436 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FC65B4C20DC538A00ED3436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -336,6 +348,7 @@
 		9FAA2AF320DE9B920010DE28 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				9FAA2B0720DEA26A0010DE28 /* Cells */,
 				9FAA2B0220DE9D510010DE28 /* TasksModel.swift */,
 				9FAA2AF820DE9BA10010DE28 /* TasksViewController.swift */,
 				9FAA2AF620DE9BA10010DE28 /* TasksPresenter.swift */,
@@ -343,6 +356,41 @@
 				9FAA2AFA20DE9BA10010DE28 /* TasksViewController.xib */,
 			);
 			path = Tasks;
+			sourceTree = "<group>";
+		};
+		9FAA2B0720DEA26A0010DE28 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9FAA2B0820DEA2760010DE28 /* TaskCell.swift */,
+				9FAA2B0A20DEA27D0010DE28 /* TaskCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9FAA2B0C20DEA4DF0010DE28 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				9FAA2B0F20DEA4F80010DE28 /* TaskService.swift */,
+				9FAA2B0D20DEA4E50010DE28 /* Input */,
+				9FAA2B0E20DEA4EA0010DE28 /* Output */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		9FAA2B0D20DEA4E50010DE28 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				9FAA2B1520DEA67E0010DE28 /* TaskInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		9FAA2B0E20DEA4EA0010DE28 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				9FAA2B1320DEA6120010DE28 /* TaskOutput.swift */,
+			);
+			path = Output;
 			sourceTree = "<group>";
 		};
 		9FC65B3B20DC538A00ED3436 = {
@@ -419,6 +467,7 @@
 		9FC65B7620DC549B00ED3436 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				9FAA2B0C20DEA4DF0010DE28 /* Task */,
 				9F99A84B20DDC9F300DF58F4 /* Todo */,
 				9F387FBE20DD969E0077B25D /* SignUp */,
 				9FC65B8E20DC574C00ED3436 /* Login */,
@@ -495,6 +544,7 @@
 			children = (
 				9FC65B9820DC596100ED3436 /* UserSession.swift */,
 				9F99A84720DDBEAA00DF58F4 /* Todo.swift */,
+				9FAA2B1120DEA5730010DE28 /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -646,6 +696,7 @@
 				9F387FE620DDAF9F0077B25D /* TodoViewController.xib in Resources */,
 				9FC65B5220DC538B00ED3436 /* LaunchScreen.storyboard in Resources */,
 				9FC65B4F20DC538B00ED3436 /* Assets.xcassets in Resources */,
+				9FAA2B0B20DEA27D0010DE28 /* TaskCell.xib in Resources */,
 				9FC65B8C20DC564800ED3436 /* LoginViewController.xib in Resources */,
 				9FAA2B0120DE9BA10010DE28 /* TasksViewController.xib in Resources */,
 				9FF7B77320DD54B6006A9F76 /* SignUpEmailStepViewController.xib in Resources */,
@@ -780,6 +831,7 @@
 				9FC65B8A20DC564800ED3436 /* LoginViewController.swift in Sources */,
 				9FF7B75820DD3D5C006A9F76 /* SignUpNameStepPresenter.swift in Sources */,
 				9FF7B77620DD55E3006A9F76 /* SignUpEmailStepViewRouter.swift in Sources */,
+				9FAA2B1220DEA5730010DE28 /* Task.swift in Sources */,
 				9FC65B8820DC564800ED3436 /* LoginPresenter.swift in Sources */,
 				9F387FEA20DDB1020077B25D /* TodoCell.swift in Sources */,
 				9F99A84A20DDC99C00DF58F4 /* UIViewExtension.swift in Sources */,
@@ -796,6 +848,7 @@
 				9FAA2AFF20DE9BA10010DE28 /* TasksViewController.swift in Sources */,
 				9FF7B77120DD54B6006A9F76 /* SignUpEmailStepViewController.swift in Sources */,
 				9FC65B9B20DC61EF00ED3436 /* LoginOutput.swift in Sources */,
+				9FAA2B1020DEA4F80010DE28 /* TaskService.swift in Sources */,
 				9F99A84F20DDCA0700DF58F4 /* TodoService.swift in Sources */,
 				9F387FD420DDA42B0077B25D /* SuccessViewController.swift in Sources */,
 				9FAA2AFD20DE9BA10010DE28 /* TasksPresenter.swift in Sources */,
@@ -811,12 +864,15 @@
 				9FF7B75A20DD3D5C006A9F76 /* SignUpNameStepViewController.swift in Sources */,
 				9FC65B9420DC57E100ED3436 /* LoginService.swift in Sources */,
 				9FC65B9920DC596100ED3436 /* UserSession.swift in Sources */,
+				9FAA2B1420DEA6120010DE28 /* TaskOutput.swift in Sources */,
 				9F387FB920DD94D20077B25D /* SignUpPasswordModel.swift in Sources */,
 				9F387FE220DDAF9F0077B25D /* TodoPresenter.swift in Sources */,
 				9F387FE420DDAF9F0077B25D /* TodoViewController.swift in Sources */,
 				9FF7B76220DD42BC006A9F76 /* BaseNavigationController.swift in Sources */,
 				9FAA2B0620DE9E6C0010DE28 /* TodoViewRouter.swift in Sources */,
+				9FAA2B0920DEA2760010DE28 /* TaskCell.swift in Sources */,
 				9F99A85620DDCA6B00DF58F4 /* TodoInput.swift in Sources */,
+				9FAA2B1620DEA67E0010DE28 /* TaskInput.swift in Sources */,
 				9FF7B76420DD4397006A9F76 /* NavigationBarManager.swift in Sources */,
 				9FA4646220DC79A5007CAF18 /* APIError.swift in Sources */,
 			);

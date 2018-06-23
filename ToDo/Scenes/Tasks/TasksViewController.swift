@@ -10,6 +10,7 @@ class TasksViewController: UIViewController {
     // MARK: Properties
     
     var presenter: TasksPresenter?
+    private var tasks: [Task]?
     
     // MARK: Initialization
     
@@ -24,10 +25,17 @@ class TasksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        presenter?.fetchTasks()
     }
 
 }
 
 extension TasksViewController: TasksView {
+    func showTasks(_ tasks: [Task]?) {
+        self.tasks = tasks
+    }
 
+    func showError(_ error: String) {
+        print(error)
+    }
 }

@@ -1,7 +1,8 @@
 import UIKit
 
 protocol TasksView: class {
-    // View methods
+    func showTasks(_ tasks: [Task]?)
+    func showError(_ error: String)
 }
 
 protocol TasksViewPresenter {
@@ -14,17 +15,27 @@ class TasksPresenter: TasksViewPresenter {
 
     unowned let view: TasksView
     private let viewModel: ViewModel
+    private let service: TaskServiceContract
 
     // MARK: Initialization
     
-    init(view: TasksView, viewModel: ViewModel) {
+    init(view: TasksView, service: TaskServiceContract, viewModel: ViewModel) {
         self.view = view
+        self.service = service
         self.viewModel = viewModel
     }
     
     // MARK: Public API
 
     func fetchTasks() {
-        
+        service.fetchTasks(todoId: viewModel.todoId) { [weak self] output, error in
+            guard error == nil else {
+                self?.view.showError(error?.message ?? "")
+                return
+            }
+
+            let tasks = output?.compactMap { Task(output: $0) }
+            self?.view.showTasks(tasks)
+        }
     }
 }

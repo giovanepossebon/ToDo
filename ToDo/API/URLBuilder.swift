@@ -45,6 +45,7 @@ extension UrlBuilder: URLConvertible {
 enum Path {
     case auth
     case custom(String)
+    case items
     case login
     case signup
     case todos

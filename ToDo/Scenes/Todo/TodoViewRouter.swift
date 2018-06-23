@@ -23,13 +23,13 @@ class TodoViewRouterImplementation: TodoViewRouter {
     func toTodoList(id: Int) {
         let controller = TasksViewController()
         let viewModel = TasksPresenter.ViewModel(todoId: id)
-        let presenter = TasksPresenter(view: controller, viewModel: viewModel)
+        let presenter = TasksPresenter(view: controller, service: TaskService(), viewModel: viewModel)
         controller.presenter = presenter
 
         self.controller?.navigationController?.pushViewController(controller, animated: true)
     }
 
     func toTodoEdit(id: Int) {
-        
+
     }
 }
