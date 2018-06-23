@@ -10,6 +10,7 @@ import Foundation
 
 extension TasksPresenter {
     struct ViewModel {
+        let title: String
         let todoId: Int
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol TodoViewRouter {
-    func toTodoList(id: Int)
+    func toTodoList(id: Int, title: String)
     func toTodoEdit(id: Int)
 }
 
@@ -20,9 +20,9 @@ class TodoViewRouterImplementation: TodoViewRouter {
         self.controller = controller
     }
 
-    func toTodoList(id: Int) {
+    func toTodoList(id: Int, title: String) {
         let controller = TasksViewController()
-        let viewModel = TasksPresenter.ViewModel(todoId: id)
+        let viewModel = TasksPresenter.ViewModel(title: title, todoId: id)
         let presenter = TasksPresenter(view: controller, service: TaskService(), viewModel: viewModel)
         controller.presenter = presenter
 

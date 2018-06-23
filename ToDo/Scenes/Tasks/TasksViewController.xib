@@ -12,8 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TasksViewController" customModule="ToDo" customModuleProvider="target">
             <connections>
-                <outlet property="tableVIewTopConstraint" destination="Jgt-Lo-Tky" id="esY-2J-61k"/>
                 <outlet property="tableView" destination="vVD-jV-giM" id="Ubx-nn-9yq"/>
+                <outlet property="tableViewTopConstraint" destination="Jgt-Lo-Tky" id="esY-2J-61k"/>
                 <outlet property="textFieldAddTask" destination="qWV-ME-s4v" id="JTU-Fq-q1g"/>
                 <outlet property="view" destination="iN0-l3-epB" id="6iE-ah-R6P"/>
                 <outlet property="viewAddBox" destination="A3d-D0-jqu" id="22h-EG-60z"/>
@@ -24,12 +24,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vVD-jV-giM">
-                    <rect key="frame" x="0.0" y="89" width="375" height="578"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vVD-jV-giM">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A3d-D0-jqu">
-                    <rect key="frame" x="17" y="29" width="341" height="52"/>
+                    <rect key="frame" x="17" y="-60" width="341" height="52"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Todo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qWV-ME-s4v">
                             <rect key="frame" x="20" y="13" width="301" height="24"/>
@@ -58,7 +58,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vVD-jV-giM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="89" id="Jgt-Lo-Tky"/>
+                <constraint firstItem="vVD-jV-giM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Jgt-Lo-Tky"/>
                 <constraint firstItem="vVD-jV-giM" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="XSe-EC-cBU"/>
                 <constraint firstItem="vVD-jV-giM" firstAttribute="top" secondItem="A3d-D0-jqu" secondAttribute="bottom" constant="8" id="Ysf-pC-vIm"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="A3d-D0-jqu" secondAttribute="trailing" constant="17" id="h5x-XR-Y9i"/>

@@ -60,8 +60,10 @@ class SignUpPasswordTests: QuickSpec {
                 context("and both passwords fields are filled properly") {
                     it("then it should call sign up service") {
                         presenter.signUp(password: "123456", repassword: "123456")
+                        expect(view.spinnerCalled).to(beTrue())
                         expect(view.error).to(beNil())
                         expect(router.successCalled).to(beTrue())
+                        expect(view.spinnerDismissed).to(beTrue())
                     }
                 }
             }
@@ -72,9 +74,19 @@ class SignUpPasswordTests: QuickSpec {
 
 private class SignUpPasswordViewSpy: SignUpPasswordView {
     var error: String?
+    var spinnerCalled: Bool = false
+    var spinnerDismissed: Bool = false
 
     func showError(_ error: String) {
         self.error = error
+    }
+
+    func showSpinner() {
+        spinnerCalled = true
+    }
+
+    func dismissSpinner() {
+        spinnerDismissed = true
     }
 }
 

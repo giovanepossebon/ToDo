@@ -3,7 +3,6 @@ import Nimble
 
 @testable import ToDo
 
-// swiftlint:disable function_body_length
 class TasksTests: QuickSpec {
     
     override func spec() {
@@ -20,5 +19,21 @@ class TasksTests: QuickSpec {
     }
 }
 
-private class TasksViewSpy: TasksView {}
+private class TasksViewSpy: TasksView {
+    var tasks: [Task]?
+    var error: String?
+    var navigationTitle: String?
+
+    func showTasks(_ tasks: [Task]?) {
+        self.tasks = tasks
+    }
+
+    func showError(_ error: String) {
+        self.error = error
+    }
+
+    func setNavigationTitle(_ text: String) {
+        navigationTitle = text
+    }
+}
 

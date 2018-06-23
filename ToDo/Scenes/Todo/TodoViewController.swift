@@ -1,7 +1,7 @@
 import UIKit
 import SVProgressHUD
 
-class TodoViewController: UIViewController, NavigationBarManager {
+class TodoViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var tableViewTopConstraint: NSLayoutConstraint!
@@ -15,8 +15,9 @@ class TodoViewController: UIViewController, NavigationBarManager {
     // MARK: Properties
     
     var presenter: TodoPresenter?
-
     private var todos: [Todo]?
+    private var barButtonAdd: UIBarButtonItem?
+    private var barButtonCancel: UIBarButtonItem?
     
     // MARK: Initialization
     
@@ -32,9 +33,17 @@ class TodoViewController: UIViewController, NavigationBarManager {
         super.viewDidLoad()
 
         setupTableView()
-        setupNavigationBarWithoutTitle()
-        setupNavigationBarAddButton()
+        setupNavigationBar()
         presenter?.fetchTodoList()
+    }
+
+    private func setupNavigationBar() {
+        self.title = "To Do Lists"
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        barButtonAdd = UIBarButtonItem(image: #imageLiteral(resourceName: "add"), style: .done, target: self, action: #selector(toggleAddBox))
+        barButtonCancel = UIBarButtonItem(image: #imageLiteral(resourceName: "cancel"), style: .done, target: self, action: #selector(toggleAddBox))
+        navigationItem.rightBarButtonItem = barButtonAdd
     }
 
     private func setupTableView() {
@@ -44,18 +53,13 @@ class TodoViewController: UIViewController, NavigationBarManager {
         tableView.register(UINib(nibName: "TodoCell", bundle: nil), forCellReuseIdentifier: "TodoCell")
     }
 
-    private func setupNavigationBarAddButton() {
-        let barButton = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(toggleAddBox))
-        barButton.tintColor = .black
-        navigationItem.rightBarButtonItem = barButton
-    }
-
     private func hideAddBox(_ hide: Bool) {
-        tableViewTopConstraint.constant = hide ? 20 : 67
+        tableViewTopConstraint.constant = hide ? 0 : 80
 
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.viewAddBox.alpha = hide ? 0.0 : 1.0
             self?.viewAddBox.isHidden = hide
+            self?.navigationItem.rightBarButtonItem = hide ? self?.barButtonAdd : self?.barButtonCancel
             self?.view.layoutIfNeeded()
         }
 
@@ -132,8 +136,10 @@ extension TodoViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { action, indexPath in
-            print("open edit")
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { [weak self] action, indexPath in
+            guard let todo = self?.todos?[indexPath.row] else { return }
+
+            self?.presenter?.editTodoList(todo: todo)
         }
 
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] action, indexPath in

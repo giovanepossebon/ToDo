@@ -28,8 +28,6 @@ class BaseNavigationController: UINavigationController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-
         if whiteNavigationBar {
             navigationBar.isTranslucent = false
             navigationBar.backgroundColor = .white
@@ -38,8 +36,8 @@ class BaseNavigationController: UINavigationController {
             navigationBar.shadowImage = UIImage()
         }
 
-        navigationBar.tintColor = whiteNavigationBar ? #colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        navigationBar.titleTextAttributes  = [NSAttributedStringKey.foregroundColor: whiteNavigationBar ? #colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
+        navigationBar.tintColor = whiteNavigationBar ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        navigationBar.titleTextAttributes  = [NSAttributedStringKey.foregroundColor: whiteNavigationBar ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
     }
 
 }

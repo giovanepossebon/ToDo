@@ -3,10 +3,12 @@ import UIKit
 protocol TasksView: class {
     func showTasks(_ tasks: [Task]?)
     func showError(_ error: String)
+    func setNavigationTitle(_ text: String)
 }
 
 protocol TasksViewPresenter {
     func fetchTasks()
+    func viewDidLoad()
 }
 
 class TasksPresenter: TasksViewPresenter {
@@ -26,6 +28,10 @@ class TasksPresenter: TasksViewPresenter {
     }
     
     // MARK: Public API
+
+    func viewDidLoad() {
+        view.setNavigationTitle(viewModel.title)
+    }
 
     func fetchTasks() {
         service.fetchTasks(todoId: viewModel.todoId) { [weak self] output, error in

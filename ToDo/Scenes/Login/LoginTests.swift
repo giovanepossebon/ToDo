@@ -42,16 +42,21 @@ class LoginTests: QuickSpec {
                     context("and the service return a success") {
                         it("should call login normally") {
                             presenter.login(email: "test@test.com", password: "123456")
+                            expect(view.spinnerCalled).to(beTrue())
+                            expect(view.spinnerDismissed).to(beTrue())
                             expect(router.loginCalled).to(beTrue())
                             expect(view.error).to(beNil())
+                            expect(view.spinnerDismissed).to(beTrue())
                         }
                     }
 
                     context("and the service returns a failure") {
                         it("should show a proper error message") {
                             presenter.login(email: "test@test.com", password: "1234")
+                            expect(view.spinnerCalled).to(beTrue())
                             expect(router.loginCalled).to(beFalse())
                             expect(view.error) == "Invalid credentials"
+                            expect(view.spinnerDismissed).to(beTrue())
                         }
                     }
 
@@ -72,9 +77,19 @@ class LoginTests: QuickSpec {
 
 private class LoginViewSpy: LoginView {
     var error: String?
+    var spinnerCalled: Bool = false
+    var spinnerDismissed: Bool = false
 
     func showError(_ error: String) {
         self.error = error
+    }
+
+    func showSpinner() {
+        spinnerCalled = true
+    }
+
+    func dismissSpinner() {
+        spinnerDismissed = true
     }
 }
 

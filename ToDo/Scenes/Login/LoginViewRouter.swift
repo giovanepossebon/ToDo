@@ -35,6 +35,7 @@ class LoginViewRouterImplementation: LoginViewRouter {
         controller.presenter = presenter
 
         let navigation = BaseNavigationController(rootViewController: controller)
+        navigation.whiteNavigationBar = true
         loginViewController?.present(navigation, animated: true, completion: nil)
     }
 }

@@ -12,6 +12,7 @@ protocol TodoViewPresenter: class {
     func fetchTodoList()
     func createTodo(title: String?)
     func showTodoList(todo: Todo)
+    func editTodoList(todo: Todo) 
 }
 
 class TodoPresenter: TodoViewPresenter {
@@ -75,7 +76,11 @@ class TodoPresenter: TodoViewPresenter {
     }
 
     func showTodoList(todo: Todo) {
-        router.toTodoList(id: todo.id)
+        router.toTodoList(id: todo.id, title: todo.title)
+    }
+
+    func editTodoList(todo: Todo) {
+        router.toTodoEdit(id: todo.id)
     }
 
 }

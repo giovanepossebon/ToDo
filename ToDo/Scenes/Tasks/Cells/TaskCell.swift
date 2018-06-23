@@ -20,8 +20,9 @@ class TaskCell: UITableViewCell {
 
     private var delegate: TaskCellDelegate?
 
-    func setup(task: String, delegate: TaskCellDelegate) {
-        labelTask.text = task
+    func setup(task: Task, delegate: TaskCellDelegate) {
+        labelTask.text = task.name
+        buttonDone.isSelected = task.done
         self.delegate = delegate
     }
 
