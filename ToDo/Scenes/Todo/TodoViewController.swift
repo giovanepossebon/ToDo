@@ -1,19 +1,22 @@
 import UIKit
+import SVProgressHUD
 
 class TodoViewController: UIViewController, NavigationBarManager {
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var buttonAddList: UIButton!
-
+    @IBOutlet private weak var tableViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var textFieldNewTodo: UITextField! {
+        didSet {
+            textFieldNewTodo.delegate = self
+        }
+    }
+    @IBOutlet weak var viewAddBox: UIView!
+    
     // MARK: Properties
     
     var presenter: TodoPresenter?
 
-    private var todos: [Todo]? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    private var todos: [Todo]?
     
     // MARK: Initialization
     
@@ -30,6 +33,7 @@ class TodoViewController: UIViewController, NavigationBarManager {
 
         setupTableView()
         setupNavigationBarWithoutTitle()
+        setupNavigationBarAddButton()
         presenter?.fetchTodoList()
     }
 
@@ -40,8 +44,26 @@ class TodoViewController: UIViewController, NavigationBarManager {
         tableView.register(UINib(nibName: "TodoCell", bundle: nil), forCellReuseIdentifier: "TodoCell")
     }
 
-    @IBAction func didTouchAddList(_ sender: Any) {
-        
+    private func setupNavigationBarAddButton() {
+        let barButton = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(toggleAddBox))
+        barButton.tintColor = .black
+        navigationItem.rightBarButtonItem = barButton
+    }
+
+    private func hideAddBox(_ hide: Bool) {
+        tableViewTopConstraint.constant = hide ? 20 : 67
+
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.viewAddBox.alpha = hide ? 0.0 : 1.0
+            self?.viewAddBox.isHidden = hide
+            self?.view.layoutIfNeeded()
+        }
+
+        _ = hide ? textFieldNewTodo.resignFirstResponder() : textFieldNewTodo.becomeFirstResponder()
+    }
+
+    @objc private func toggleAddBox() {
+        hideAddBox(!viewAddBox.isHidden)
     }
 }
 
@@ -52,10 +74,39 @@ extension TodoViewController: TodoView {
 
     func setTodoList(_ todos: [Todo]?) {
         self.todos = todos
+        tableView.reloadData()
+    }
+
+    func refreshTodoList() {
+        textFieldNewTodo.resignFirstResponder()
+        textFieldNewTodo.text = ""
+        toggleAddBox()
+
+        presenter?.fetchTodoList()
+    }
+
+    func showSpinner() {
+        SVProgressHUD.show()
+    }
+
+    func dismissSpinner() {
+        SVProgressHUD.dismiss()
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if !viewAddBox.isHidden {
+            hideAddBox(true)
+        }
     }
 }
 
 extension TodoViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let todo = todos?[indexPath.row] {
+            presenter?.showTodoList(todo: todo)
+        }
+    }
 
 }
 
@@ -69,22 +120,42 @@ extension TodoViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as? TodoCell {
             guard let todo = todos?[indexPath.row] else { return UITableViewCell() }
 
-            cell.setup(title: todo.title, delegate: self)
+            cell.setup(title: todo.title)
             return cell
         }
 
         return UITableViewCell()
     }
-}
 
-extension TodoViewController: TodoCellDelegate {
-    func didTouchEdit(cell: TodoCell) {
-        let indexPath = tableView.indexPath(for: cell)
-        print(indexPath)
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 
-    func didTouchDelete(cell: TodoCell) {
-        let indexPath = tableView.indexPath(for: cell)
-        print(indexPath)
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { action, indexPath in
+            print("open edit")
+        }
+
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] action, indexPath in
+            guard let todo = self?.todos?[indexPath.row] else { return }
+
+            self?.todos?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+
+            self?.presenter?.deleteTodo(todo)
+        }
+
+        editAction.backgroundColor = .orange
+        deleteAction.backgroundColor = .red
+
+        return [editAction, deleteAction]
+    }
+}
+
+extension TodoViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        presenter?.createTodo(title: textField.text)
+
+        return true
     }
 }

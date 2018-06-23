@@ -8,17 +8,10 @@
 
 import UIKit
 
-protocol TodoCellDelegate {
-    func didTouchEdit(cell: TodoCell)
-    func didTouchDelete(cell: TodoCell)
-}
-
 class TodoCell: UITableViewCell {
     
     @IBOutlet private weak var labelTitle: UILabel!
     @IBOutlet private weak var cellContentView: UIView!
-
-    private var delegate: TodoCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,20 +24,11 @@ class TodoCell: UITableViewCell {
         resetUI()
     }
 
-    func setup(title: String, delegate: TodoCellDelegate) {
+    func setup(title: String) {
         labelTitle.text = title
-        self.delegate = delegate
     }
 
     private func resetUI() {
         labelTitle.text = ""
-    }
-
-    @IBAction func didTouchEdit(_ sender: Any) {
-        delegate?.didTouchEdit(cell: self)
-    }
-
-    @IBAction func didTouchDelete(_ sender: Any) {
-        delegate?.didTouchDelete(cell: self)
     }
 }

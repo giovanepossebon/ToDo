@@ -8,4 +8,14 @@
 
 import Foundation
 
-typealias TodoInput = Int
+struct TodoInput {
+    let title: String
+}
+
+extension TodoInput: Input {
+
+    var toDict: [String : Any] {
+        return ["title": title]
+    }
+
+}

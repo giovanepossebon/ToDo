@@ -6,6 +6,7 @@ target 'ToDo' do
 
   pod 'Alamofire', '~> 4.7'
   pod 'KeychainSwift', '~> 11.0'
+  pod 'SVProgressHUD'
 
   target 'ToDoTests' do
     pod 'Quick'

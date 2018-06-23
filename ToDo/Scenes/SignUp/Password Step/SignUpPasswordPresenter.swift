@@ -2,6 +2,8 @@ import UIKit
 
 protocol SignUpPasswordView: class {
     func showError(_ error: String)
+    func showSpinner()
+    func dismissSpinner()
 }
 
 protocol SignUpPasswordViewPresenter {
@@ -46,7 +48,10 @@ class SignUpPasswordPresenter: SignUpPasswordViewPresenter {
                                 password: password,
                                 repassword: repassword)
 
+        view.showSpinner()
         service.signUp(input: input) { [weak self] output, error in
+            self?.view.dismissSpinner()
+
             guard error == nil else {
                 self?.view.showError(error?.message ?? "")
                 return

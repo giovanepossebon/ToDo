@@ -75,7 +75,7 @@ class Network {
                 return
             }
 
-            guard let _ = response.data, response.response?.statusCode == 200 else {
+            guard let _ = response.data, response.result.isSuccess else {
                 completion(false, API.handleAPIError(from: response))
                 return
             }

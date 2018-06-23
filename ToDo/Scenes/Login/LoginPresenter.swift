@@ -1,5 +1,11 @@
 import UIKit
 
+protocol LoginView: class {
+    func showError(_ error: String)
+    func showSpinner()
+    func dismissSpinner()
+}
+
 protocol LoginViewPresenter {
     func login(email: String?, password: String?)
     func signUp()
@@ -36,7 +42,10 @@ class LoginPresenter: LoginViewPresenter {
         }
 
         let input = LoginInput(email: email, password: password)
+        view.showSpinner()
         service.login(input: input) { [weak self] success, error in
+            self?.view.dismissSpinner()
+            
             if success {
                 self?.router.login()
             } else {

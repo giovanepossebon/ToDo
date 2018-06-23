@@ -10,6 +10,8 @@ import Foundation
 
 protocol TodoServiceContract {
     func fetchTodos(callback: @escaping (ReturnOutput<[TodoOutput]>))
+    func createTodo(input: TodoInput, callback: @escaping (ReturnOutput<TodoOutput>))
+    func deleteTodo(id: Int, callback: @escaping (ReturnBool))
 }
 
 struct TodoService: TodoServiceContract {
@@ -19,4 +21,13 @@ struct TodoService: TodoServiceContract {
         Network.requestList(url, completion: callback)
     }
 
+    func createTodo(input: TodoInput, callback: @escaping (ReturnOutput<TodoOutput>)) {
+        let url = UrlBuilder(path: [.todos])
+        Network.requestObject(url, method: .post, parameters: input, completion: callback)
+    }
+
+    func deleteTodo(id: Int, callback: @escaping (ReturnBool)) {
+        let url = UrlBuilder(path: [.todos, .custom("\(id)")])
+        Network.requestBool(url, method: .delete, completion: callback)
+    }
 }

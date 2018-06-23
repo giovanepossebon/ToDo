@@ -31,7 +31,7 @@ class LoginViewRouterImplementation: LoginViewRouter {
 
     func login() {
         let controller = TodoViewController()
-        let presenter = TodoPresenter(view: controller, service: TodoService())
+        let presenter = TodoPresenter(view: controller, service: TodoService(), router: TodoViewRouterImplementation(controller: controller))
         controller.presenter = presenter
 
         let navigation = BaseNavigationController(rootViewController: controller)
