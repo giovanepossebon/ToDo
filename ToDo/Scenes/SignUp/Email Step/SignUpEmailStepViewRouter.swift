@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SignUpEmailStepViewRouter {
-    func presentPassword(email: String)
+    func presentPassword(name: String, email: String)
 }
 
 class SignUpEmailStepViewRouterImplementation: SignUpEmailStepViewRouter {
@@ -19,8 +19,13 @@ class SignUpEmailStepViewRouterImplementation: SignUpEmailStepViewRouter {
         self.controller = controller
     }
 
-    func presentPassword(email: String) {
+    func presentPassword(name: String, email: String) {
+        let controller = SignUpPasswordViewController()
+        let viewModel = SignUpPasswordPresenter.ViewModel(name: name, email: email)
+        let presenter = SignUpPasswordPresenter(view: controller, router: SignUpPasswordViewRouterImplementation(controller: controller), service: SignupService(), viewModel: viewModel)
+        controller.presenter = presenter
 
+        self.controller?.navigationController?.pushViewController(controller, animated: true)
     }
 
 }

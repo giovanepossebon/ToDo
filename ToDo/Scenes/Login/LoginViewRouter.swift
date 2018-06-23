@@ -22,11 +22,19 @@ class LoginViewRouterImplementation: LoginViewRouter {
 
     func presentSignUp() {
         let controller = SignUpNameStepViewController()
+        let presenter = SignUpNameStepPresenter(view: controller, router: SignUpNameStepViewRouterImplementation(controller: controller))
+        controller.presenter = presenter
+
         let navigation = BaseNavigationController(rootViewController: controller)
         loginViewController?.present(navigation, animated: true, completion: nil)
     }
 
     func login() {
+        let controller = TodoViewController()
+        let presenter = TodoPresenter(view: controller, service: TodoService())
+        controller.presenter = presenter
 
+        let navigation = BaseNavigationController(rootViewController: controller)
+        loginViewController?.present(navigation, animated: true, completion: nil)
     }
 }

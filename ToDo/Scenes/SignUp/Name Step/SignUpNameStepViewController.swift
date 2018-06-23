@@ -12,13 +12,12 @@ class SignUpNameStepViewController: UIViewController, NavigationBarManager {
 
     // MARK: Properties
     
-    private var presenter: SignUpNameStepPresenter?
+    var presenter: SignUpNameStepPresenter?
     
     // MARK: Initialization
     
     init() {
         super.init(nibName: "SignUpNameStepViewController", bundle: nil)
-        presenter = SignUpNameStepPresenter(view: self, router: SignUpNameStepViewRouterImplementation(controller: self))
     }
     
     required init?(coder aDecoder: NSCoder) { return nil }
@@ -30,6 +29,8 @@ class SignUpNameStepViewController: UIViewController, NavigationBarManager {
 
         setupNavigationBar(title: "SignUp")
         setupNavigationBarCloseButton()
+
+        textFieldName.becomeFirstResponder()
     }
 
     // MARK: Private API

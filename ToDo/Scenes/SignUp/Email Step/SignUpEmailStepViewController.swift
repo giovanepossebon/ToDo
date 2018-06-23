@@ -29,6 +29,8 @@ class SignUpEmailStepViewController: UIViewController, NavigationBarManager {
         super.viewDidLoad()
 
         setupNavigationBar(title: "Sign Up")
+
+        textFieldEmail.becomeFirstResponder()
     }
 
 }

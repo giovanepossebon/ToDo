@@ -33,7 +33,7 @@ class SignUpEmailStepPresenter: SignUpEmailStepViewPresenter {
             return
         }
 
-        router.presentPassword(email: email)
+        router.presentPassword(name: viewModel.name, email: email)
     }
 
 }

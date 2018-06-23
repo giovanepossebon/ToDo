@@ -62,7 +62,7 @@ private class SignUpEmailStepViewSpy: SignUpEmailStepView {
 private class SignUpEmailStepViewRouterSpy: SignUpEmailStepViewRouter {
     var presentPasswordCalled: Bool = false
 
-    func presentPassword(email: String) {
+    func presentPassword(name: String, email: String) {
         presentPasswordCalled = true
     }
 }

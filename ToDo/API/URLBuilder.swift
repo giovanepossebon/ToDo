@@ -47,6 +47,7 @@ enum Path {
     case custom(String)
     case login
     case signup
+    case todos
 
     func getPath() -> String {
         switch self {
