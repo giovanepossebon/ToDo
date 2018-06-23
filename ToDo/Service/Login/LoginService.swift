@@ -9,13 +9,13 @@
 import Foundation
 
 protocol LoginServiceContract {
-    func login(input: LoginInput, callback: @escaping ReturnBool)
+    func login(input: LoginInput, callback: @escaping (ReturnOutput<LoginOutput>))
 }
 
 struct LoginService: LoginServiceContract {
 
-    func login(input: LoginInput, callback: @escaping ReturnBool) {
+    func login(input: LoginInput, callback: @escaping (ReturnOutput<LoginOutput>)) {
         let url = UrlBuilder(path: [.auth, .login])
-        Network.requestBool(url, method: .post, parameters: input, completion: callback)
+        Network.requestObject(url, method: .post, parameters: input, completion: callback)
     }
 }

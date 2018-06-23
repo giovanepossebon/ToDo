@@ -107,11 +107,11 @@ private class LoginViewRouterSpy: LoginViewRouter {
 }
 
 private class LoginServiceMock: LoginServiceContract {
-    func login(input: LoginInput, callback: @escaping ReturnBool) {
+    func login(input: LoginInput, callback: @escaping ((LoginOutput?, APIError?) -> Void)) {
         if input.password == "123456" {
-            callback(true, nil)
+            callback(LoginOutput(authToken: "123456"), nil)
         } else {
-            callback(false, APIError(message: "Invalid credentials"))
+            callback(LoginOutput(authToken: ""), APIError(message: "Invalid credentials"))
         }
     }
 }

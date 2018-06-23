@@ -20,6 +20,18 @@ class TasksTests: QuickSpec {
 }
 
 private class TasksViewSpy: TasksView {
+    func showSpinner() {
+        
+    }
+
+    func hideSpinner() {
+
+    }
+
+    func refreshTasksList() {
+
+    }
+
     var tasks: [Task]?
     var error: String?
     var navigationTitle: String?

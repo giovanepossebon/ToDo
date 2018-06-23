@@ -32,6 +32,7 @@ class BaseNavigationController: UINavigationController {
             navigationBar.isTranslucent = false
             navigationBar.backgroundColor = .white
         } else {
+            navigationBar.setBackgroundImage(UIImage(), for: .default)
             navigationBar.isTranslucent = true
             navigationBar.shadowImage = UIImage()
         }

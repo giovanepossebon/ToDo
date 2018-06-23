@@ -43,14 +43,24 @@ class LoginPresenter: LoginViewPresenter {
 
         let input = LoginInput(email: email, password: password)
         view.showSpinner()
-        service.login(input: input) { [weak self] success, error in
+        service.login(input: input) { [weak self] output, error in
             self?.view.dismissSpinner()
-            
-            if success {
-                self?.router.login()
-            } else {
+
+            guard error == nil else {
                 self?.view.showError(error?.message ?? "")
+                return
             }
+
+            if !isRunningUnitTests() {
+                guard let token = output?.authToken else {
+                    self?.view.showError("Invalid token")
+                    return
+                }
+
+                UserSession.shared.authToken = token
+            }
+
+            self?.router.login()
         }
     }
 

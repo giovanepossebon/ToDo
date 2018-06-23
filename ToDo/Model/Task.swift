@@ -12,6 +12,7 @@ struct Task {
     let id: Int
     let name: String
     let done: Bool
+    let todoId: Int
 }
 
 extension Task {
@@ -19,5 +20,6 @@ extension Task {
         id = output.id
         name = output.name
         done = output.done
+        todoId = output.todoId
     }
 }

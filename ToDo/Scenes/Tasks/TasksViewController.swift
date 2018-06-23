@@ -1,8 +1,13 @@
 import UIKit
+import SVProgressHUD
 
 class TasksViewController: UIViewController {
     
-    @IBOutlet private weak var textFieldAddTask: UITextField!
+    @IBOutlet private weak var textFieldAddTask: UITextField! {
+        didSet {
+            textFieldAddTask.delegate = self
+        }
+    }
     @IBOutlet private weak var viewAddBox: UIView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var tableViewTopConstraint: NSLayoutConstraint!
@@ -11,6 +16,8 @@ class TasksViewController: UIViewController {
     
     var presenter: TasksPresenter?
     private var tasks: [Task]?
+    private var barButtonAdd: UIBarButtonItem?
+    private var barButtonCancel: UIBarButtonItem?
     
     // MARK: Initialization
     
@@ -41,10 +48,9 @@ class TasksViewController: UIViewController {
 
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-
-        let barButton = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(toggleAddBox))
-        barButton.tintColor = .black
-        navigationItem.rightBarButtonItem = barButton
+        barButtonAdd = UIBarButtonItem(image: #imageLiteral(resourceName: "add"), style: .done, target: self, action: #selector(toggleAddBox))
+        barButtonCancel = UIBarButtonItem(image: #imageLiteral(resourceName: "cancel"), style: .done, target: self, action: #selector(toggleAddBox))
+        navigationItem.rightBarButtonItem = barButtonAdd
     }
 
     private func hideAddBox(_ hide: Bool) {
@@ -53,6 +59,7 @@ class TasksViewController: UIViewController {
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.viewAddBox.alpha = hide ? 0.0 : 1.0
             self?.viewAddBox.isHidden = hide
+            self?.navigationItem.rightBarButtonItem = hide ? self?.barButtonAdd : self?.barButtonCancel
             self?.view.layoutIfNeeded()
         }
 
@@ -63,9 +70,30 @@ class TasksViewController: UIViewController {
         hideAddBox(!viewAddBox.isHidden)
     }
 
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if !viewAddBox.isHidden {
+            hideAddBox(true)
+        }
+    }
 }
 
 extension TasksViewController: TasksView {
+    func showSpinner() {
+        SVProgressHUD.show()
+    }
+
+    func hideSpinner() {
+        SVProgressHUD.dismiss()
+    }
+
+    func refreshTasksList() {
+        textFieldAddTask.resignFirstResponder()
+        textFieldAddTask.text = ""
+        toggleAddBox()
+
+        presenter?.fetchTasks()
+    }
+
     func showTasks(_ tasks: [Task]?) {
         self.tasks = tasks
         tableView.reloadData()
@@ -87,16 +115,17 @@ extension TasksViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .normal, title: "Edit") { [weak self] action, indexPath in
-            guard let todo = self?.tasks?[indexPath.row] else { return }
+            guard let task = self?.tasks?[indexPath.row] else { return }
 
         }
 
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] action, indexPath in
-            guard let todo = self?.tasks?[indexPath.row] else { return }
+            guard let task = self?.tasks?[indexPath.row] else { return }
 
             self?.tasks?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
 
+            self?.presenter?.deleteTask(task: task)
         }
 
         editAction.backgroundColor = .orange
@@ -124,6 +153,14 @@ extension TasksViewController: UITableViewDataSource {
         return UITableViewCell()
     }
 
+}
+
+extension TasksViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        presenter?.createTask(name: textField.text)
+
+        return true
+    }
 }
 
 extension TasksViewController: TaskCellDelegate {

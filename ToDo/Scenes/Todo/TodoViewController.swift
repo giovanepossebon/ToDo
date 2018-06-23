@@ -69,6 +69,12 @@ class TodoViewController: UIViewController {
     @objc private func toggleAddBox() {
         hideAddBox(!viewAddBox.isHidden)
     }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if !viewAddBox.isHidden {
+            hideAddBox(true)
+        }
+    }
 }
 
 extension TodoViewController: TodoView {
@@ -95,12 +101,6 @@ extension TodoViewController: TodoView {
 
     func dismissSpinner() {
         SVProgressHUD.dismiss()
-    }
-
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if !viewAddBox.isHidden {
-            hideAddBox(true)
-        }
     }
 }
 

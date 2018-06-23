@@ -29,6 +29,7 @@ class TaskCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         cellContentView.setupDropShadow()
+        selectionStyle = .none
 
         resetUI()
     }
