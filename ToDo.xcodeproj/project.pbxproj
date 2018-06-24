@@ -36,6 +36,7 @@
 		9F4C363D20DFD801006861D9 /* EditPopupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C363220DFD776006861D9 /* EditPopupTests.swift */; };
 		9F4C363F20DFEA5F006861D9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C363E20DFEA5F006861D9 /* DateExtension.swift */; };
 		9F4C364120DFFB02006861D9 /* TasksViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C364020DFFB02006861D9 /* TasksViewRouter.swift */; };
+		9F4C364320E016A4006861D9 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C364220E016A4006861D9 /* UIAlertControllerExtension.swift */; };
 		9F99A84820DDBEAA00DF58F4 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99A84720DDBEAA00DF58F4 /* Todo.swift */; };
 		9F99A84A20DDC99C00DF58F4 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99A84920DDC99C00DF58F4 /* UIViewExtension.swift */; };
 		9F99A84F20DDCA0700DF58F4 /* TodoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99A84E20DDCA0700DF58F4 /* TodoService.swift */; };
@@ -137,6 +138,7 @@
 		9F4C363520DFD776006861D9 /* EditPopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPopupViewController.xib; sourceTree = "<group>"; };
 		9F4C363E20DFEA5F006861D9 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		9F4C364020DFFB02006861D9 /* TasksViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewRouter.swift; sourceTree = "<group>"; };
+		9F4C364220E016A4006861D9 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		9F99A84720DDBEAA00DF58F4 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		9F99A84920DDC99C00DF58F4 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		9F99A84E20DDCA0700DF58F4 /* TodoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoService.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 			children = (
 				9F99A84920DDC99C00DF58F4 /* UIViewExtension.swift */,
 				9F4C363E20DFEA5F006861D9 /* DateExtension.swift */,
+				9F4C364220E016A4006861D9 /* UIAlertControllerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -867,6 +870,7 @@
 				9FC65B8820DC564800ED3436 /* LoginPresenter.swift in Sources */,
 				9F387FEA20DDB1020077B25D /* TodoCell.swift in Sources */,
 				9F99A84A20DDC99C00DF58F4 /* UIViewExtension.swift in Sources */,
+				9F4C364320E016A4006861D9 /* UIAlertControllerExtension.swift in Sources */,
 				9FA4646420DC806A007CAF18 /* LoginViewRouter.swift in Sources */,
 				9FC65B7B20DC550500ED3436 /* Network.swift in Sources */,
 				9F387FC020DD96B30077B25D /* SignupService.swift in Sources */,

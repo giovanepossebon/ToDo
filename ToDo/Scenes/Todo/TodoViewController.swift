@@ -10,6 +10,7 @@ class TodoViewController: UIViewController {
             textFieldNewTodo.delegate = self
         }
     }
+
     @IBOutlet weak var viewAddBox: UIView!
     
     // MARK: Properties
@@ -36,6 +37,8 @@ class TodoViewController: UIViewController {
         setupNavigationBar()
         presenter?.fetchTodoList()
     }
+
+    // MARK: Private API
 
     private func setupNavigationBar() {
         self.title = "To Do Lists"
@@ -70,6 +73,8 @@ class TodoViewController: UIViewController {
         hideAddBox(!viewAddBox.isHidden)
     }
 
+    // MARK: ScrollViewDelegate
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if !viewAddBox.isHidden {
             hideAddBox(true)
@@ -77,9 +82,11 @@ class TodoViewController: UIViewController {
     }
 }
 
+// MARK: TodoView
+
 extension TodoViewController: TodoView {
     func showError(_ error: String) {
-        print(error)
+        self.present(UIAlertController.errorAlert(message: error), animated: true, completion: nil)
     }
 
     func setTodoList(_ todos: [Todo]?) {
@@ -104,6 +111,8 @@ extension TodoViewController: TodoView {
     }
 }
 
+// MARK: UITableViewDelegate
+
 extension TodoViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -113,6 +122,8 @@ extension TodoViewController: UITableViewDelegate {
     }
 
 }
+
+// MARK: UITableViewDataSource
 
 extension TodoViewController: UITableViewDataSource {
 
@@ -157,6 +168,8 @@ extension TodoViewController: UITableViewDataSource {
         return [editAction, deleteAction]
     }
 }
+
+// MARK: UITextFieldDelegate
 
 extension TodoViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

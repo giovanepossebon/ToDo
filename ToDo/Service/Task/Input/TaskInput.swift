@@ -12,7 +12,7 @@ struct TaskInput {
     let name: String?
     let done: Bool?
 
-    init(name: String? = "", done: Bool? = nil) {
+    init(name: String? = nil, done: Bool? = nil) {
         self.name = name
         self.done = done
     }
@@ -23,7 +23,7 @@ extension TaskInput: Input {
     var toDict: [String : Any] {
         var params: [String: Any] = [:]
 
-        if name != "" {
+        if name != nil {
             params["name"] = name
         }
 

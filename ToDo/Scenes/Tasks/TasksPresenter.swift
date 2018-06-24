@@ -10,6 +10,7 @@ protocol TasksView: class {
 }
 
 protocol TasksViewPresenter {
+    init(view: TasksView, service: TaskServiceContract, viewModel: TasksPresenter.ViewModel, router: TasksViewRouter)
     func fetchTasks()
     func createTask(name: String?)
     func viewDidLoad()
@@ -24,12 +25,12 @@ class TasksPresenter: TasksViewPresenter {
 
     unowned let view: TasksView
     private let viewModel: ViewModel
-    private let service: TaskServiceContract
-    private let router: TasksViewRouter
+    internal let service: TaskServiceContract
+    internal let router: TasksViewRouter
 
     // MARK: Initialization
     
-    init(view: TasksView, service: TaskServiceContract, viewModel: ViewModel, router: TasksViewRouter) {
+    required init(view: TasksView, service: TaskServiceContract, viewModel: ViewModel, router: TasksViewRouter) {
         self.view = view
         self.service = service
         self.viewModel = viewModel
@@ -120,6 +121,8 @@ class TasksPresenter: TasksViewPresenter {
     }
 
 }
+
+// MARK: EditPopupDelegate
 
 extension TasksPresenter: EditPopupDelegate {
     func editPopupDidConfirm(_ viewController: UIViewController, newValue: String, for id: Int) {

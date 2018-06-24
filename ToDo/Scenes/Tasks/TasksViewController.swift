@@ -2,12 +2,15 @@ import UIKit
 import SVProgressHUD
 
 class TasksViewController: UIViewController {
-    
+
+    // MARK: IBOutlets
+
     @IBOutlet private weak var textFieldAddTask: UITextField! {
         didSet {
             textFieldAddTask.delegate = self
         }
     }
+
     @IBOutlet private weak var viewAddBox: UIView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var tableViewTopConstraint: NSLayoutConstraint!
@@ -38,6 +41,8 @@ class TasksViewController: UIViewController {
         presenter?.viewDidLoad()
         presenter?.fetchTasks()
     }
+
+    // MARK: Private API
 
     private func setupTableView() {
         tableView.delegate = self
@@ -70,12 +75,16 @@ class TasksViewController: UIViewController {
         hideAddBox(!viewAddBox.isHidden)
     }
 
+    // MARK: ScrollViewDelegate
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if !viewAddBox.isHidden {
             hideAddBox(true)
         }
     }
 }
+
+// MARK: TasksView
 
 extension TasksViewController: TasksView {
     func showSpinner() {
@@ -100,13 +109,15 @@ extension TasksViewController: TasksView {
     }
 
     func showError(_ error: String) {
-        print(error)
+        self.present(UIAlertController.errorAlert(message: error), animated: true, completion: nil)
     }
 
     func setNavigationTitle(_ text: String) {
         self.title = text
     }
 }
+
+// MARK: UITableViewDelegate
 
 extension TasksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -136,6 +147,8 @@ extension TasksViewController: UITableViewDelegate {
     }
 }
 
+// MARK: UITableViewDataSource
+
 extension TasksViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -156,6 +169,8 @@ extension TasksViewController: UITableViewDataSource {
 
 }
 
+// MARK: UITextFieldDelegate
+
 extension TasksViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         presenter?.createTask(name: textField.text)
@@ -163,6 +178,8 @@ extension TasksViewController: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: TaskCellDelegate
 
 extension TasksViewController: TaskCellDelegate {
     func didTouchDone(cell: UITableViewCell) {

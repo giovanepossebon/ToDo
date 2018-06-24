@@ -9,7 +9,8 @@ protocol EditPopupDelegate: class {
     func editPopupDidDismiss(_ viewController: UIViewController)
 }
 
-protocol EditPopupViewPresenter: class {
+protocol EditPopupViewPresenter {
+    init(delegate: EditPopupDelegate, view: EditPopupView, viewModel: EditPopupPresenter.ViewModel)
     func confirm(from viewController: UIViewController, newValue: String?)
     func dismiss(from viewController: UIViewController)
     func viewDidLoad()
@@ -25,7 +26,7 @@ class EditPopupPresenter: EditPopupViewPresenter {
     
     // MARK: Initialization
     
-    init(delegate: EditPopupDelegate, view: EditPopupView, viewModel: ViewModel) {
+    required init(delegate: EditPopupDelegate, view: EditPopupView, viewModel: ViewModel) {
         self.delegate = delegate
         self.view = view
         self.viewModel = viewModel

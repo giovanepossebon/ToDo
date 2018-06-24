@@ -39,9 +39,7 @@ class SignUpPasswordViewController: UIViewController, NavigationBarManager {
 
 extension SignUpPasswordViewController: SignUpPasswordView {
     func showError(_ error: String) {
-        let alert = UIAlertController(title: "Hey!", message: error, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.present(UIAlertController.errorAlert(message: error), animated: true, completion: nil)
     }
 
     func showSpinner() {

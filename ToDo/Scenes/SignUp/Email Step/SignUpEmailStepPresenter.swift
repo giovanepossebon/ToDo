@@ -4,9 +4,9 @@ protocol SignUpEmailStepView: class {
     func showError(_ error: String)
 }
 
-protocol SignUpEmailStepViewPresenter: class {
+protocol SignUpEmailStepViewPresenter {
+    init(view: SignUpEmailStepView, router: SignUpEmailStepViewRouter, viewModel: SignUpEmailStepPresenter.ViewModel)
     func moveForward(email: String?)
-    var router: SignUpEmailStepViewRouter { get }
 }
 
 class SignUpEmailStepPresenter: SignUpEmailStepViewPresenter {

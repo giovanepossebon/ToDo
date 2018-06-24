@@ -7,8 +7,8 @@ protocol SignUpPasswordView: class {
 }
 
 protocol SignUpPasswordViewPresenter {
+    init(view: SignUpPasswordView, router: SignUpPasswordViewRouter, service: SignupServiceContract, viewModel: SignUpPasswordPresenter.ViewModel)
     func signUp(password: String?, repassword: String?)
-    var router: SignUpPasswordViewRouter { get }
 }
 
 class SignUpPasswordPresenter: SignUpPasswordViewPresenter {
@@ -22,7 +22,7 @@ class SignUpPasswordPresenter: SignUpPasswordViewPresenter {
     
     // MARK: Initialization
     
-    init(view: SignUpPasswordView, router: SignUpPasswordViewRouter, service: SignupServiceContract, viewModel: ViewModel) {
+    required init(view: SignUpPasswordView, router: SignUpPasswordViewRouter, service: SignupServiceContract, viewModel: ViewModel) {
         self.view = view
         self.router = router
         self.viewModel = viewModel

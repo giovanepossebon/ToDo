@@ -8,11 +8,12 @@ protocol TodoView: class {
     func refreshTodoList()
 }
 
-protocol TodoViewPresenter: class {
+protocol TodoViewPresenter {
+    init(view: TodoView, service: TodoServiceContract, router: TodoViewRouter)
     func fetchTodoList()
     func createTodo(title: String?)
     func showTodoList(todo: Todo)
-    func editTodoList(todo: Todo) 
+    func editTodoList(todo: Todo)
 }
 
 class TodoPresenter: TodoViewPresenter {
@@ -20,12 +21,12 @@ class TodoPresenter: TodoViewPresenter {
     // MARK: Properties
     
     unowned let view: TodoView
-    private let service: TodoServiceContract
-    private let router: TodoViewRouter
+    internal let service: TodoServiceContract
+    internal let router: TodoViewRouter
     
     // MARK: Initialization
     
-    init(view: TodoView, service: TodoServiceContract, router: TodoViewRouter) {
+    required init(view: TodoView, service: TodoServiceContract, router: TodoViewRouter) {
         self.view = view
         self.service = service
         self.router = router

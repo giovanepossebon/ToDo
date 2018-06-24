@@ -7,9 +7,9 @@ protocol LoginView: class {
 }
 
 protocol LoginViewPresenter {
+    init(view: LoginView, router: LoginViewRouter, service: LoginServiceContract)
     func login(email: String?, password: String?)
     func signUp()
-    var router: LoginViewRouter { get }
 }
 
 class LoginPresenter: LoginViewPresenter {
@@ -53,7 +53,7 @@ class LoginPresenter: LoginViewPresenter {
 
             if !isRunningUnitTests() {
                 guard let token = output?.authToken else {
-                    self?.view.showError("Invalid token")
+                    self?.view.showError("Unexpected error")
                     return
                 }
 

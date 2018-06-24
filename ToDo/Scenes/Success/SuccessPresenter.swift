@@ -8,7 +8,8 @@ protocol SuccessDelegate: class {
     func successDidDismiss(viewController: UIViewController)
 }
 
-protocol SuccessViewPresenter: class {
+protocol SuccessViewPresenter {
+    init(view: SuccessView, viewModel: SuccessPresenter.ViewModel, delegate: SuccessDelegate)
     func viewDidLoad(viewController: UIViewController)
 }
 
@@ -22,7 +23,7 @@ class SuccessPresenter: SuccessViewPresenter {
     
     // MARK: Initialization
     
-    init(view: SuccessView, viewModel: ViewModel, delegate: SuccessDelegate) {
+    required init(view: SuccessView, viewModel: ViewModel, delegate: SuccessDelegate) {
         self.view = view
         self.viewModel = viewModel
         self.delegate = delegate

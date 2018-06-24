@@ -47,7 +47,7 @@ class SignUpNameStepViewController: UIViewController, NavigationBarManager {
 
 extension SignUpNameStepViewController: SignUpNameStepView {
     func showError(_ error: String) {
-        print(error)
+        self.present(UIAlertController.errorAlert(message: error), animated: true, completion: nil)
     }
 }
 

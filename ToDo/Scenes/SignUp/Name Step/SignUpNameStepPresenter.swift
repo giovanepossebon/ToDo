@@ -4,10 +4,10 @@ protocol SignUpNameStepView: class {
     func showError(_ error: String)
 }
 
-protocol SignUpNameStepViewPresenter: class {
+protocol SignUpNameStepViewPresenter {
+    init(view: SignUpNameStepView, router: SignUpNameStepViewRouter)
     func moveForward(name: String?)
     func dismiss()
-    var router: SignUpNameStepViewRouter { get }
 }
 
 class SignUpNameStepPresenter: SignUpNameStepViewPresenter {
