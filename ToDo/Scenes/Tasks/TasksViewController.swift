@@ -82,14 +82,14 @@ extension TasksViewController: TasksView {
         SVProgressHUD.show()
     }
 
-    func hideSpinner() {
+    func dismissSpinner() {
         SVProgressHUD.dismiss()
     }
 
     func refreshTasksList() {
         textFieldAddTask.resignFirstResponder()
         textFieldAddTask.text = ""
-        toggleAddBox()
+        hideAddBox(true)
 
         presenter?.fetchTasks()
     }
@@ -117,6 +117,7 @@ extension TasksViewController: UITableViewDelegate {
         let editAction = UITableViewRowAction(style: .normal, title: "Edit") { [weak self] action, indexPath in
             guard let task = self?.tasks?[indexPath.row] else { return }
 
+            self?.presenter?.routeToEdit(with: task)
         }
 
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] action, indexPath in

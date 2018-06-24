@@ -90,7 +90,7 @@ extension TodoViewController: TodoView {
     func refreshTodoList() {
         textFieldNewTodo.resignFirstResponder()
         textFieldNewTodo.text = ""
-        toggleAddBox()
+        hideAddBox(true)
 
         presenter?.fetchTodoList()
     }

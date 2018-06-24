@@ -43,6 +43,10 @@ class TodoPresenter: TodoViewPresenter {
             }
 
             let todos = output?.compactMap { Todo(output: $0) }
+                .sorted(by: {
+                    $0.created.compare($1.created) == .orderedDescending
+                })
+
             self?.view.setTodoList(todos)
         }
     }
@@ -80,7 +84,34 @@ class TodoPresenter: TodoViewPresenter {
     }
 
     func editTodoList(todo: Todo) {
-        router.toTodoEdit(id: todo.id)
+        router.toTodoEdit(id: todo.id, title: todo.title)
     }
 
+    func editTodo(with id: Int, newTitle: String) {
+        let input = TodoInput(title: newTitle)
+
+        view.showSpinner()
+        service.editTodo(id: id, input: input) { [weak self] success, error in
+            self?.view.dismissSpinner()
+            if !success {
+                self?.view.showError(error?.message ?? "")
+                return
+            }
+
+            self?.view.refreshTodoList()
+        }
+    }
+
+}
+
+extension TodoPresenter: EditPopupDelegate {
+    func editPopupDidConfirm(_ viewController: UIViewController, newValue: String, for id: Int) {
+        viewController.dismiss(animated: true) { [weak self] in
+            self?.editTodo(with: id, newTitle: newValue)
+        }
+    }
+
+    func editPopupDidDismiss(_ viewController: UIViewController) {
+        viewController.dismiss(animated: true, completion: nil)
+    }
 }

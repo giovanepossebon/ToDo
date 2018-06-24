@@ -19,7 +19,7 @@ extension Todo {
     init(output: TodoOutput) {
         self.id = output.id
         self.title = output.title
-        self.created = Date()
-        self.updated = Date()
+        self.created = Date.dateFrom(string: output.createdAt)
+        self.updated = Date.dateFrom(string: output.updatedAt)
     }
 }

@@ -34,8 +34,9 @@ class TodoTests: QuickSpec {
                 }
 
                 context("and there are existing lists of todos") {
-                    it("then it should update view list") {
+                    it("then it should update view list ordered by creation") {
                         expect(view.listTodosCalled).to(beTrue())
+                        expect(view.todos?[0].created.compare(view.todos![1].created)) == .orderedDescending
                     }
                 }
 
@@ -50,7 +51,7 @@ class TodoTests: QuickSpec {
                     }
 
                     it("then it shouldn't create a new todo list") {
-                        expect(service.todoCreated).to(beFalse())
+                        expect(service.todoCreateCalled).to(beFalse())
                     }
 
                 }
@@ -63,7 +64,7 @@ class TodoTests: QuickSpec {
                     }
 
                     it("then it should create a new todo list") {
-                        expect(service.todoCreated).to(beTrue())
+                        expect(service.todoCreateCalled).to(beTrue())
                     }
 
                 }
@@ -74,7 +75,7 @@ class TodoTests: QuickSpec {
 
                 it("then it should delete it") {
                     presenter.deleteTodo(Todo(id: 0, title: "", created: Date(), updated: Date()))
-                    expect(service.todoDeleted).to(beTrue())
+                    expect(service.todoDeleteCalled).to(beTrue())
                 }
 
             }
@@ -93,6 +94,18 @@ class TodoTests: QuickSpec {
                 it("then it should navigate to edit item") {
                     presenter.editTodoList(todo: Todo(id: 0, title: "", created: Date(), updated: Date()))
                     expect(router.toTodoEditCalled).to(beTrue())
+                }
+
+            }
+
+            describe("when user has edited an existent todo list") {
+
+                it("then it should edit it") {
+                    presenter.editTodo(with: 1, newTitle: "Market")
+                    expect(view.spinnerCalled).to(beTrue())
+                    expect(service.todoEditCalled).to(beTrue())
+                    expect(view.spinnerDismissed).to(beTrue())
+                    expect(view.error).to(beNil())
                 }
 
             }
@@ -138,28 +151,35 @@ private class TodoViewRouterSpy: TodoViewRouter {
         toTodoListCalled = true
     }
 
-    func toTodoEdit(id: Int) {
+    func toTodoEdit(id: Int, title: String) {
         toTodoEditCalled = true
     }
 }
 
 private class TodoServiceMock: TodoServiceContract {
-    var todos: [Todo]?
-    var todoCreated: Bool = false
-    var todoDeleted: Bool = false
+    var todoCreateCalled: Bool = false
+    var todoDeleteCalled: Bool = false
+    var todoEditCalled: Bool = false
 
     func fetchTodos(callback: @escaping (([TodoOutput]?, APIError?) -> Void)) {
-        let todos = [TodoOutput(id: 0, title: "Market", createdBy: "1", createdAt: "02-27-2018", updatedAt: "02-21-2018"),
-                     TodoOutput(id: 1, title: "Homework", createdBy: "2", createdAt: "02-28-2018", updatedAt: "02-05-2018")]
+        let todos = [TodoOutput(id: 0, title: "Market", createdBy: "1", createdAt: "2018-06-24T14:55:42.603Z", updatedAt: "2018-06-24T14:56:40.706Z"),
+                     TodoOutput(id: 1, title: "Homework", createdBy: "2", createdAt: "2018-06-24T14:56:14.788Z", updatedAt: "2018-06-24T14:57:44.676Z")]
 
         callback(todos, nil)
     }
 
     func createTodo(input: TodoInput, callback: @escaping ((TodoOutput?, APIError?) -> Void)) {
-        todoCreated = true
+        todoCreateCalled = true
+        callback(TodoOutput(id: 0, title: "Market", createdBy: "1", createdAt: "2018-06-24T14:55:42.603Z", updatedAt: "2018-06-24T14:56:40.706Z"), nil)
     }
 
     func deleteTodo(id: Int, callback: @escaping (ReturnBool)) {
-        todoDeleted = true
+        todoDeleteCalled = true
+        callback(true, nil)
+    }
+
+    func editTodo(id: Int, input: TodoInput, callback: @escaping (ReturnBool)) {
+        todoEditCalled = true
+        callback(true, nil)
     }
 }

@@ -12,6 +12,7 @@ protocol TaskServiceContract {
     func fetchTasks(todoId: Int, callback: @escaping (ReturnOutput<[TaskOutput]>))
     func createTask(todoId: Int, input: TaskInput, callback: @escaping (ReturnBool))
     func deleteTask(todoId: Int, itemId: Int, callback: @escaping (ReturnBool))
+    func editTask(todoId: Int, itemId: Int, input: TaskEditInput, callback: @escaping (ReturnBool))
 }
 
 struct TaskService: TaskServiceContract {
@@ -31,4 +32,8 @@ struct TaskService: TaskServiceContract {
         Network.requestBool(url, method: .delete, completion: callback)
     }
 
+    func editTask(todoId: Int, itemId: Int, input: TaskEditInput, callback: @escaping (ReturnBool)) {
+        let url = UrlBuilder(path: [.todos, .custom("\(todoId)"), .items, .custom("\(itemId)")])
+        Network.requestBool(url, method: .patch, parameters: input, completion: callback)
+    }
 }

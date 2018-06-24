@@ -21,3 +21,15 @@ extension TaskInput: Input {
     }
 
 }
+
+struct TaskEditInput {
+    let name: String
+}
+
+extension TaskEditInput: Input {
+
+    var toDict: [String : Any] {
+        return ["name": name]
+    }
+
+}

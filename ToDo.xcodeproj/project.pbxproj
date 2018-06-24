@@ -29,6 +29,13 @@
 		9F387FE720DDAFEB0077B25D /* TodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F387FDC20DDAF9F0077B25D /* TodoTests.swift */; };
 		9F387FEA20DDB1020077B25D /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F387FE920DDB1020077B25D /* TodoCell.swift */; };
 		9F387FEC20DDB10A0077B25D /* TodoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F387FEB20DDB10A0077B25D /* TodoCell.xib */; };
+		9F4C363820DFD776006861D9 /* EditPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C363120DFD776006861D9 /* EditPopupPresenter.swift */; };
+		9F4C363A20DFD776006861D9 /* EditPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C363320DFD776006861D9 /* EditPopupViewController.swift */; };
+		9F4C363B20DFD776006861D9 /* EditPopupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C363420DFD776006861D9 /* EditPopupModel.swift */; };
+		9F4C363C20DFD776006861D9 /* EditPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F4C363520DFD776006861D9 /* EditPopupViewController.xib */; };
+		9F4C363D20DFD801006861D9 /* EditPopupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C363220DFD776006861D9 /* EditPopupTests.swift */; };
+		9F4C363F20DFEA5F006861D9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C363E20DFEA5F006861D9 /* DateExtension.swift */; };
+		9F4C364120DFFB02006861D9 /* TasksViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4C364020DFFB02006861D9 /* TasksViewRouter.swift */; };
 		9F99A84820DDBEAA00DF58F4 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99A84720DDBEAA00DF58F4 /* Todo.swift */; };
 		9F99A84A20DDC99C00DF58F4 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99A84920DDC99C00DF58F4 /* UIViewExtension.swift */; };
 		9F99A84F20DDCA0700DF58F4 /* TodoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F99A84E20DDCA0700DF58F4 /* TodoService.swift */; };
@@ -123,6 +130,13 @@
 		9F387FDF20DDAF9F0077B25D /* TodoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoViewController.xib; sourceTree = "<group>"; };
 		9F387FE920DDB1020077B25D /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		9F387FEB20DDB10A0077B25D /* TodoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoCell.xib; sourceTree = "<group>"; };
+		9F4C363120DFD776006861D9 /* EditPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPopupPresenter.swift; sourceTree = "<group>"; };
+		9F4C363220DFD776006861D9 /* EditPopupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPopupTests.swift; sourceTree = "<group>"; };
+		9F4C363320DFD776006861D9 /* EditPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPopupViewController.swift; sourceTree = "<group>"; };
+		9F4C363420DFD776006861D9 /* EditPopupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPopupModel.swift; sourceTree = "<group>"; };
+		9F4C363520DFD776006861D9 /* EditPopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPopupViewController.xib; sourceTree = "<group>"; };
+		9F4C363E20DFEA5F006861D9 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		9F4C364020DFFB02006861D9 /* TasksViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewRouter.swift; sourceTree = "<group>"; };
 		9F99A84720DDBEAA00DF58F4 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		9F99A84920DDC99C00DF58F4 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		9F99A84E20DDCA0700DF58F4 /* TodoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoService.swift; sourceTree = "<group>"; };
@@ -309,6 +323,18 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		9F4C362E20DFD757006861D9 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				9F4C363420DFD776006861D9 /* EditPopupModel.swift */,
+				9F4C363320DFD776006861D9 /* EditPopupViewController.swift */,
+				9F4C363120DFD776006861D9 /* EditPopupPresenter.swift */,
+				9F4C363220DFD776006861D9 /* EditPopupTests.swift */,
+				9F4C363520DFD776006861D9 /* EditPopupViewController.xib */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
 		9F99A84B20DDC9F300DF58F4 /* Todo */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				9FAA2B0720DEA26A0010DE28 /* Cells */,
+				9F4C364020DFFB02006861D9 /* TasksViewRouter.swift */,
 				9FAA2B0220DE9D510010DE28 /* TasksModel.swift */,
 				9FAA2AF820DE9BA10010DE28 /* TasksViewController.swift */,
 				9FAA2AF620DE9BA10010DE28 /* TasksPresenter.swift */,
@@ -455,6 +482,7 @@
 		9FC65B7520DC546B00ED3436 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9F4C362E20DFD757006861D9 /* Generic */,
 				9FAA2AF320DE9B920010DE28 /* Tasks */,
 				9F387FD820DDAF7B0077B25D /* Todo */,
 				9F387FC720DD9F170077B25D /* Success */,
@@ -497,6 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				9F99A84920DDC99C00DF58F4 /* UIViewExtension.swift */,
+				9F4C363E20DFEA5F006861D9 /* DateExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -700,6 +729,7 @@
 				9FC65B8C20DC564800ED3436 /* LoginViewController.xib in Resources */,
 				9FAA2B0120DE9BA10010DE28 /* TasksViewController.xib in Resources */,
 				9FF7B77320DD54B6006A9F76 /* SignUpEmailStepViewController.xib in Resources */,
+				9F4C363C20DFD776006861D9 /* EditPopupViewController.xib in Resources */,
 				9F387FEC20DDB10A0077B25D /* TodoCell.xib in Resources */,
 				9FF7B75C20DD3D5C006A9F76 /* SignUpNameStepViewController.xib in Resources */,
 				9FC65B4D20DC538A00ED3436 /* Main.storyboard in Resources */,
@@ -829,9 +859,11 @@
 			files = (
 				9F387FBC20DD95360077B25D /* SignUpPasswordViewRouter.swift in Sources */,
 				9FC65B8A20DC564800ED3436 /* LoginViewController.swift in Sources */,
+				9F4C364120DFFB02006861D9 /* TasksViewRouter.swift in Sources */,
 				9FF7B75820DD3D5C006A9F76 /* SignUpNameStepPresenter.swift in Sources */,
 				9FF7B77620DD55E3006A9F76 /* SignUpEmailStepViewRouter.swift in Sources */,
 				9FAA2B1220DEA5730010DE28 /* Task.swift in Sources */,
+				9F4C363F20DFEA5F006861D9 /* DateExtension.swift in Sources */,
 				9FC65B8820DC564800ED3436 /* LoginPresenter.swift in Sources */,
 				9F387FEA20DDB1020077B25D /* TodoCell.swift in Sources */,
 				9F99A84A20DDC99C00DF58F4 /* UIViewExtension.swift in Sources */,
@@ -864,11 +896,14 @@
 				9FF7B75A20DD3D5C006A9F76 /* SignUpNameStepViewController.swift in Sources */,
 				9FC65B9420DC57E100ED3436 /* LoginService.swift in Sources */,
 				9FC65B9920DC596100ED3436 /* UserSession.swift in Sources */,
+				9F4C363B20DFD776006861D9 /* EditPopupModel.swift in Sources */,
 				9FAA2B1420DEA6120010DE28 /* TaskOutput.swift in Sources */,
 				9F387FB920DD94D20077B25D /* SignUpPasswordModel.swift in Sources */,
 				9F387FE220DDAF9F0077B25D /* TodoPresenter.swift in Sources */,
 				9F387FE420DDAF9F0077B25D /* TodoViewController.swift in Sources */,
 				9FF7B76220DD42BC006A9F76 /* BaseNavigationController.swift in Sources */,
+				9F4C363820DFD776006861D9 /* EditPopupPresenter.swift in Sources */,
+				9F4C363A20DFD776006861D9 /* EditPopupViewController.swift in Sources */,
 				9FAA2B0620DE9E6C0010DE28 /* TodoViewRouter.swift in Sources */,
 				9FAA2B0920DEA2760010DE28 /* TaskCell.swift in Sources */,
 				9F99A85620DDCA6B00DF58F4 /* TodoInput.swift in Sources */,
@@ -886,6 +921,7 @@
 				9FF7B75D20DD3D71006A9F76 /* SignUpNameStepTests.swift in Sources */,
 				9FC65B5D20DC538B00ED3436 /* ToDoTests.swift in Sources */,
 				9FF7B77420DD54C1006A9F76 /* SignUpEmailStepTests.swift in Sources */,
+				9F4C363D20DFD801006861D9 /* EditPopupTests.swift in Sources */,
 				9FAA2B0420DE9D820010DE28 /* TasksTests.swift in Sources */,
 				9F387FBD20DD96650077B25D /* SignUpPasswordTests.swift in Sources */,
 				9FA4646020DC6F51007CAF18 /* LoginTests.swift in Sources */,

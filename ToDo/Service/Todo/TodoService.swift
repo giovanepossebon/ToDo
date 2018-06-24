@@ -12,6 +12,7 @@ protocol TodoServiceContract {
     func fetchTodos(callback: @escaping (ReturnOutput<[TodoOutput]>))
     func createTodo(input: TodoInput, callback: @escaping (ReturnOutput<TodoOutput>))
     func deleteTodo(id: Int, callback: @escaping (ReturnBool))
+    func editTodo(id: Int, input: TodoInput, callback: @escaping (ReturnBool))
 }
 
 struct TodoService: TodoServiceContract {
@@ -29,5 +30,10 @@ struct TodoService: TodoServiceContract {
     func deleteTodo(id: Int, callback: @escaping (ReturnBool)) {
         let url = UrlBuilder(path: [.todos, .custom("\(id)")])
         Network.requestBool(url, method: .delete, completion: callback)
+    }
+
+    func editTodo(id: Int, input: TodoInput, callback: @escaping (ReturnBool)) {
+        let url = UrlBuilder(path: [.todos, .custom("\(id)")])
+        Network.requestBool(url, method: .patch, parameters: input, completion: callback)
     }
 }

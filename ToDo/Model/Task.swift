@@ -13,6 +13,7 @@ struct Task {
     let name: String
     let done: Bool
     let todoId: Int
+    let created: Date
 }
 
 extension Task {
@@ -21,5 +22,6 @@ extension Task {
         name = output.name
         done = output.done
         todoId = output.todoId
+        created = Date.dateFrom(string: output.createdAt)
     }
 }
