@@ -9,27 +9,29 @@
 import Foundation
 
 struct TaskInput {
-    let name: String
-    let done: Bool
+    let name: String?
+    let done: Bool?
+
+    init(name: String? = "", done: Bool? = nil) {
+        self.name = name
+        self.done = done
+    }
 }
 
 extension TaskInput: Input {
 
     var toDict: [String : Any] {
-        return ["name": name,
-                "done": done]
-    }
+        var params: [String: Any] = [:]
 
-}
+        if name != "" {
+            params["name"] = name
+        }
 
-struct TaskEditInput {
-    let name: String
-}
+        if done != nil {
+            params["done"] = done
+        }
 
-extension TaskEditInput: Input {
-
-    var toDict: [String : Any] {
-        return ["name": name]
+        return params
     }
 
 }

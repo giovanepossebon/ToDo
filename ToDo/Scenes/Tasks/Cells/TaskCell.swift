@@ -26,6 +26,10 @@ class TaskCell: UITableViewCell {
         self.delegate = delegate
     }
 
+    func updateState(_ value: Bool) {
+        buttonDone.isSelected = value
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         cellContentView.setupDropShadow()

@@ -28,6 +28,7 @@
                                     <constraint firstAttribute="width" constant="22" id="UxX-uj-JPD"/>
                                 </constraints>
                                 <state key="normal" image="undone"/>
+                                <state key="selected" image="done"/>
                                 <connections>
                                     <action selector="didTouchDone:" destination="7mt-d5-fBl" eventType="touchUpInside" id="zIF-fg-FqN"/>
                                 </connections>
@@ -72,6 +73,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="done" width="22" height="21"/>
         <image name="undone" width="22" height="22"/>
     </resources>
 </document>

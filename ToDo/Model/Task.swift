@@ -11,7 +11,7 @@ import Foundation
 struct Task {
     let id: Int
     let name: String
-    let done: Bool
+    var done: Bool
     let todoId: Int
     let created: Date
 }

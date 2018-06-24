@@ -171,7 +171,7 @@ private class TasksServiceMock: TaskServiceContract {
         callback(true, nil)
     }
 
-    func editTask(todoId: Int, itemId: Int, input: TaskEditInput, callback: @escaping (ReturnBool)) {
+    func editTask(todoId: Int, itemId: Int, input: TaskInput, callback: @escaping (ReturnBool)) {
         editTaskCalled = true
         callback(true, nil)
     }

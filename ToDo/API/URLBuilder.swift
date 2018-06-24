@@ -11,11 +11,9 @@ import Alamofire
 
 struct UrlBuilder {
     let paths: [Path]
-    let queries: [String]?
 
-    init(path: [Path], query: [String]? = nil) {
+    init(path: [Path]) {
         self.paths = path
-        self.queries = query
     }
 }
 
@@ -27,12 +25,7 @@ extension UrlBuilder: URLConvertible {
             return current + "/" + path.getPath()
         }
 
-        let queryString = queries?.enumerated().reduce("") { current, element in
-            let symbol = element.offset == 0 ? "?" : "&"
-            return current! + symbol + element.element
-            } ?? ""
-
-        let urlString = baseString + pathString + queryString
+        let urlString = baseString + pathString
 
         guard let url = URL(string: urlString) else {
             throw AFError.invalidURL(url: urlString)

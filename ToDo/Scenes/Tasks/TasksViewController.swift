@@ -166,6 +166,13 @@ extension TasksViewController: UITextFieldDelegate {
 
 extension TasksViewController: TaskCellDelegate {
     func didTouchDone(cell: UITableViewCell) {
-        
+        if let indexPath = tableView.indexPath(for: cell) {
+            if let task = tasks?[indexPath.row], let cell = cell as? TaskCell {
+                cell.updateState(!task.done)
+                tasks?[indexPath.row].done = !task.done
+
+                presenter?.updateTask(id: task.id, done: !task.done)
+            }
+        }
     }
 }

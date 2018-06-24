@@ -15,6 +15,7 @@ protocol TasksViewPresenter {
     func viewDidLoad()
     func editTask(id: Int, newValue: String)
     func routeToEdit(with task: Task)
+    func updateTask(id: Int, done: Bool)
 }
 
 class TasksPresenter: TasksViewPresenter {
@@ -93,7 +94,7 @@ class TasksPresenter: TasksViewPresenter {
     }
 
     func editTask(id: Int, newValue: String) {
-        let input = TaskEditInput(name: newValue)
+        let input = TaskInput(name: newValue)
 
         view.showSpinner()
         service.editTask(todoId: viewModel.todoId, itemId: id, input: input) { [weak self] success, error in
@@ -104,6 +105,17 @@ class TasksPresenter: TasksViewPresenter {
             }
 
             self?.view.refreshTasksList()
+        }
+    }
+
+    func updateTask(id: Int, done: Bool) {
+        let input = TaskInput(done: done)
+
+        service.editTask(todoId: viewModel.todoId, itemId: id, input: input) { [weak self] success, error in
+            if !success {
+                self?.view.showError(error?.message ?? "")
+                self?.view.refreshTasksList()
+            }
         }
     }
 

@@ -28,11 +28,6 @@ struct API {
     }
 }
 
-enum Result {
-    case success
-    case error(message: String)
-}
-
 protocol Input {
     var toDict: [String: Any] { get }
 }
