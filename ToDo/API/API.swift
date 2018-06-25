@@ -17,13 +17,13 @@ struct API {
 
     static func handleAPIError(from response: DataResponse<Any>) -> APIError {
         guard let data = response.data else {
-            return APIError(message: response.error?.localizedDescription ?? "")
+            return APIError(message: response.error?.localizedDescription ?? "Unexpected Error")
         }
 
         do {
             return try JSONDecoder().decode(APIError.self, from: data)
         } catch {
-            return APIError(message: response.error?.localizedDescription ?? "")
+            return APIError(message: response.error?.localizedDescription ?? "Unexpected Error")
         }
     }
 }

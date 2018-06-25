@@ -26,6 +26,7 @@ class TasksViewRouterImplementation: TasksViewRouter {
         let viewModel = EditPopupPresenter.ViewModel(id: task.id, value: task.name)
         let presenter = EditPopupPresenter(delegate: taskPresenter, view: controller, viewModel: viewModel)
         controller.presenter = presenter
+        controller.modalPresentationStyle = .overCurrentContext
 
         self.controller.present(controller, animated: true, completion: nil)
     }
