@@ -6,12 +6,16 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var textFieldEmail: UITextField! {
         didSet {
             textFieldEmail.delegate = self
+            textFieldEmail.attributedPlaceholder = NSAttributedString(string: "Email",
+                                                                      attributes: [NSAttributedStringKey.foregroundColor: UIColor.gray])
         }
     }
 
     @IBOutlet private weak var textFieldPassword: UITextField! {
         didSet {
             textFieldPassword.delegate = self
+            textFieldPassword.attributedPlaceholder = NSAttributedString(string: "Password",
+                                                                         attributes: [NSAttributedStringKey.foregroundColor: UIColor.gray])
         }
     }
 
