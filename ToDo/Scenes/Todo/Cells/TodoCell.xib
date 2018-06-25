@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoCell" rowHeight="164" id="PnB-w4-xbN" customClass="TodoCell" customModule="ToDo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="164"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PnB-w4-xbN" id="UpZ-OA-hh1">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="163.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpF-qe-TNV">
+                        <rect key="frame" x="16" y="19" width="343" height="126"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPc-R1-ijZ">
+                                <rect key="frame" x="18" y="18" width="307" height="33"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.19215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rPc-R1-ijZ" firstAttribute="leading" secondItem="hpF-qe-TNV" secondAttribute="leading" constant="18" id="AhK-NO-BNe"/>
+                            <constraint firstAttribute="trailing" secondItem="rPc-R1-ijZ" secondAttribute="trailing" constant="18" id="FHi-vb-f8B"/>
+                            <constraint firstItem="rPc-R1-ijZ" firstAttribute="top" secondItem="hpF-qe-TNV" secondAttribute="top" constant="18" id="MHL-se-GGD"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="hpF-qe-TNV" firstAttribute="top" secondItem="UpZ-OA-hh1" secondAttribute="topMargin" constant="8" id="FZD-R0-PkA"/>
+                    <constraint firstItem="hpF-qe-TNV" firstAttribute="trailing" secondItem="UpZ-OA-hh1" secondAttribute="trailingMargin" id="WJe-Pj-uAe"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="hpF-qe-TNV" secondAttribute="bottom" constant="8" id="d5i-E8-stv"/>
+                    <constraint firstItem="hpF-qe-TNV" firstAttribute="leading" secondItem="UpZ-OA-hh1" secondAttribute="leadingMargin" id="n5P-m7-OnY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellContentView" destination="hpF-qe-TNV" id="Efj-GF-ZfO"/>
+                <outlet property="labelTitle" destination="rPc-R1-ijZ" id="pJ9-0r-WJx"/>
+            </connections>
+            <point key="canvasLocation" x="-60.5" y="-1"/>
+        </tableViewCell>
+    </objects>
+</document>
