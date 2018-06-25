@@ -13,7 +13,7 @@ protocol SignUpEmailStepViewRouter {
 }
 
 class SignUpEmailStepViewRouterImplementation: SignUpEmailStepViewRouter {
-    fileprivate weak var controller: SignUpEmailStepViewController?
+    private let controller: SignUpEmailStepViewController
 
     init(controller: SignUpEmailStepViewController) {
         self.controller = controller
@@ -25,7 +25,7 @@ class SignUpEmailStepViewRouterImplementation: SignUpEmailStepViewRouter {
         let presenter = SignUpPasswordPresenter(view: controller, router: SignUpPasswordViewRouterImplementation(controller: controller), service: SignupService(), viewModel: viewModel)
         controller.presenter = presenter
 
-        self.controller?.navigationController?.pushViewController(controller, animated: true)
+        self.controller.navigationController?.pushViewController(controller, animated: true)
     }
 
 }

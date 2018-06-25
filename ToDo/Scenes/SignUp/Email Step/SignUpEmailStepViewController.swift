@@ -35,11 +35,15 @@ class SignUpEmailStepViewController: UIViewController, NavigationBarManager {
 
 }
 
+// MARK: SignUpEmailStepView
+
 extension SignUpEmailStepViewController: SignUpEmailStepView {
     func showError(_ error: String) {
         self.present(UIAlertController.errorAlert(message: error), animated: true, completion: nil)
     }
 }
+
+// MARK: UITextFieldDelegate
 
 extension SignUpEmailStepViewController: UITextFieldDelegate {
 

@@ -26,6 +26,7 @@ class SuccessViewController: UIViewController {
 
 }
 
+// MARK: SuccessView
 
 extension SuccessViewController: SuccessView {
     func setMessage(_ text: String) {

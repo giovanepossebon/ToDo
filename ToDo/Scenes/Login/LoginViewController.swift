@@ -47,6 +47,7 @@ class LoginViewController: UIViewController {
     }
 }
 
+// MARK: LoginView
 
 extension LoginViewController: LoginView {
     func showError(_ error: String) {
@@ -61,6 +62,8 @@ extension LoginViewController: LoginView {
         SVProgressHUD.dismiss()
     }
 }
+
+// MARK: UITextFieldDelegate
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
