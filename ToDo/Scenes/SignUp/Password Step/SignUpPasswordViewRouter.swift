@@ -14,7 +14,7 @@ protocol SignUpPasswordViewRouter {
 
 class SignUpPasswordViewRouterImplementation: SignUpPasswordViewRouter {
 
-    fileprivate var controller: SignUpPasswordViewController?
+    private let controller: SignUpPasswordViewController
 
     init(controller: SignUpPasswordViewController) {
         self.controller = controller
@@ -26,7 +26,7 @@ class SignUpPasswordViewRouterImplementation: SignUpPasswordViewRouter {
         let presenter = SuccessPresenter(view: controller, viewModel: viewModel, delegate: self)
         controller.presenter = presenter
 
-        self.controller?.present(controller, animated: true, completion: nil)
+        self.controller.present(controller, animated: true, completion: nil)
     }
 
 }
@@ -35,7 +35,7 @@ extension SignUpPasswordViewRouterImplementation: SuccessDelegate {
 
     func successDidDismiss(viewController: UIViewController) {
         viewController.dismiss(animated: true, completion: { [weak self] in
-            self?.controller?.dismiss(animated: true, completion: nil)
+            self?.controller.dismiss(animated: true, completion: nil)
         })
     }
 

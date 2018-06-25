@@ -105,6 +105,8 @@ class TodoPresenter: TodoViewPresenter {
 
 }
 
+// MARK: EditPopupDelegate
+
 extension TodoPresenter: EditPopupDelegate {
     func editPopupDidConfirm(_ viewController: UIViewController, newValue: String, for id: Int) {
         viewController.dismiss(animated: true) { [weak self] in

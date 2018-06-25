@@ -14,7 +14,7 @@ protocol LoginViewRouter {
 }
 
 class LoginViewRouterImplementation: LoginViewRouter {
-    fileprivate weak var loginViewController: LoginViewController?
+    private let loginViewController: LoginViewController
 
     init(loginViewController: LoginViewController) {
         self.loginViewController = loginViewController
@@ -26,7 +26,7 @@ class LoginViewRouterImplementation: LoginViewRouter {
         controller.presenter = presenter
 
         let navigation = BaseNavigationController(rootViewController: controller)
-        loginViewController?.present(navigation, animated: true, completion: nil)
+        loginViewController.present(navigation, animated: true, completion: nil)
     }
 
     func login() {
@@ -36,6 +36,6 @@ class LoginViewRouterImplementation: LoginViewRouter {
 
         let navigation = BaseNavigationController(rootViewController: controller)
         navigation.whiteNavigationBar = true
-        loginViewController?.present(navigation, animated: true, completion: nil)
+        loginViewController.present(navigation, animated: true, completion: nil)
     }
 }
