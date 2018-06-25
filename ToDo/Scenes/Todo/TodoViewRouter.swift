@@ -36,6 +36,7 @@ class TodoViewRouterImplementation: TodoViewRouter {
         let viewModel = EditPopupPresenter.ViewModel(id: id, value: title)
         let presenter = EditPopupPresenter(delegate: todoPresenter, view: controller, viewModel: viewModel)
         controller.presenter = presenter
+        controller.modalPresentationStyle = .overCurrentContext
 
         self.controller.present(controller, animated: true, completion: nil)
     }
