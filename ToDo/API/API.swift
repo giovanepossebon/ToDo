@@ -12,7 +12,7 @@ import Foundation
 struct API {
 
     struct URLs {
-        static let baseURL = "https://todos.flexhire.com"
+        static let baseURL = ""
     }
 
     static func handleAPIError(from response: DataResponse<Any>) -> APIError {
